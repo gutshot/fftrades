@@ -11,10 +11,10 @@
 		background: #ccc;
 		font-weight: bold;
 	}
-	div.com-md-6:first-of-type {
+	.first-group {
 		padding-left: 0;
+		padding-right: 30px;
 	}
-
 	</style>
 
 	<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -25,76 +25,87 @@
 
 <body>
 	<div class="container">
-		<div class="page-header">
-			<h1>Fantasy Football Trade Evaluator</h1>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h1>Fantasy Football Trade Evaluator</h1>
+				</div>
+				<p>This Fantasy Football Trade Evaluator uses the trade rankings from CBS Sports' Dave Richard. You can find his latest Trade Rankings <a href="http://www.cbssports.com/writers/dave-richard/">here</a>.</p>
+
+				<p><em><strong>Oct. 4, 2016:</strong> Updated for Week 5</em></p>
+			</div>
 		</div>
-		<p>This Fantasy Football Trade Evaluator uses the trade rankings from CBS Sports' Dave Richard. You can find his latest Trade Rankings <a href="http://www.cbssports.com/writers/dave-richard/">here</a>.</p>
-
-		<p><em><strong>Oct. 4, 2016:</strong> Updated for Week 5</em></p>
 		<form id="tradeEvaluator">
-			<div class="col-md-6">
-				<h3>My Team</h3>
-				<div class="form-group">
-					<label for="player1team1">Player 1</label>
-					<select class="form-control player-name team1" id="player1team1">
-						<option value="">Select a player...</option>
-					</select>
+			<div class="row">
+				<div class="col-lg-6">
+					<h3>My Team</h3>
+					<div class="form-group">
+						<label for="player1team1">Player 1</label>
+						<select class="form-control player-name team1" id="player1team1">
+							<option value="">Select a player...</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="player2team1">Player 2</label>
+						<select class="form-control player-name team1" id="player2team1">
+							<option value="">Select a player...</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="player3team1">Player 3</label>
+						<select class="form-control player-name team1" id="player3team1">
+							<option value="">Select a player...</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="player4team1">Player 4</label>
+						<select class="form-control player-name team1" id="player4team1">
+							<option value="">Select a player...</option>
+						</select>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="player2team1">Player 2</label>
-					<select class="form-control player-name team1" id="player2team1">
-						<option value="">Select a player...</option>
-					</select>
+				<div class="col-lg-6">
+					<h3>Other Team</h3>
+					<div class="form-group">
+						<label for="player1team2">Player 1</label>
+						<select class="form-control player-name team1" id="player1team2">
+							<option value="" selected>Select a player...</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="player2team2">Player 2</label>
+						<select class="form-control player-name team1" id="player2team2">
+							<option value="">Select a player...</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="player3team2">Player 3</label>
+						<select class="form-control player-name team1" id="player3team2">
+							<option value="">Select a player...</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="player4team2">Player 4</label>
+						<select class="form-control player-name team1" id="player4team2">
+							<option value="">Select a player...</option>
+						</select>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="player3team1">Player 3</label>
-					<select class="form-control player-name team1" id="player3team1">
-						<option value="">Select a player...</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="player4team1">Player 4</label>
-					<select class="form-control player-name team1" id="player4team1">
-						<option value="">Select a player...</option>
-					</select>
-				</div>
-				
 			</div>
-			<div class="col-md-6">
-				<h3>Other Team</h3>
-				<div class="form-group">
-					<label for="player1team2">Player 1</label>
-					<select class="form-control player-name team1" id="player1team2">
-						<option value="" selected>Select a player...</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="player2team2">Player 2</label>
-					<select class="form-control player-name team1" id="player2team2">
-						<option value="">Select a player...</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="player3team2">Player 3</label>
-					<select class="form-control player-name team1" id="player3team2">
-						<option value="">Select a player...</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="player4team2">Player 4</label>
-					<select class="form-control player-name team1" id="player4team2">
-						<option value="">Select a player...</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group">
-					<label for="scoringSystem">Scoring System</label> <br/>
-					<input type="radio" name="scoringSystem" value="Stnd" checked="checked"> Standard
-					<input type="radio" name="scoringSystem" value="PPR"> PPR
-				</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="scoringSystem">Scoring System</label> <br/>
+						<input type="radio" name="scoringSystem" value="Stnd" checked="checked"> Standard
+						<input type="radio" name="scoringSystem" value="PPR"> PPR
+					</div>
 
-			<button type="submit" class="btn btn-primary" >Submit</button> <button type="reset" class="btn btn-default">Clear</button>
+					<button type="submit" class="btn btn-primary" >Submit</button> <button type="reset" class="btn btn-default">Clear</button>
+
+				</div>
+			</div>
 		</form>
+		
 
 		
 
@@ -104,7 +115,7 @@
 			</div>
 
 			<div class="panel-body">
-				<div class="clearfix">
+				<div class="row clearfix">
 					<div class="col-md-6 team1-results">
 					</div>
 
@@ -133,6 +144,8 @@
 
 		<h3>DSTs</h3>
 		<table id="dsts" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>	Player</td><td>	Stnd</td><td>	PPR</td> </tr><tr class="row1"><td>Broncos DST</td><td>7</td><td>7</td> </tr><tr class="row1"><td>Vikings DST</td><td>7</td><td>7</td> </tr><tr class="row1"><td>Seahawks DST</td><td>7</td><td>7</td> </tr></tbody></table>
+
+		<p class="pull-right"><em><strong>Oct. 4, 2016:</strong> Updated for Week 5</em></p>
 	</div>
 
 
