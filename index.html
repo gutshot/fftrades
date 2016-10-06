@@ -11,6 +11,10 @@
 		background: #ccc;
 		font-weight: bold;
 	}
+	div.com-md-6:first-of-type {
+		padding-left: 0;
+	}
+
 	</style>
 
 	<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -21,10 +25,15 @@
 
 <body>
 	<div class="container">
-		<h1>Fantasy Football Trade Evaluator</h1>
+		<div class="page-header">
+			<h1>Fantasy Football Trade Evaluator</h1>
+		</div>
+		<p>This Fantasy Football Trade Evaluator uses the trade rankings from CBS Sports' Dave Richard. You can find his latest Trade Rankings <a href="http://www.cbssports.com/writers/dave-richard/">here</a>.</p>
+
+		<p><em><strong>Oct. 4, 2016:</strong> Updated for Week 5</em></p>
 		<form id="tradeEvaluator">
 			<div class="col-md-6">
-				<h3>Team 1</h3>
+				<h3>My Team</h3>
 				<div class="form-group">
 					<label for="player1team1">Player 1</label>
 					<select class="form-control player-name team1" id="player1team1">
@@ -49,9 +58,10 @@
 						<option value="">Select a player...</option>
 					</select>
 				</div>
+				
 			</div>
 			<div class="col-md-6">
-				<h3>Team 2</h3>
+				<h3>Other Team</h3>
 				<div class="form-group">
 					<label for="player1team2">Player 1</label>
 					<select class="form-control player-name team1" id="player1team2">
@@ -77,18 +87,36 @@
 					</select>
 				</div>
 			</div>
+			<div class="form-group">
+					<label for="scoringSystem">Scoring System</label> <br/>
+					<input type="radio" name="scoringSystem" value="Stnd" checked="checked"> Standard
+					<input type="radio" name="scoringSystem" value="PPR"> PPR
+				</div>
 
 			<button type="submit" class="btn btn-primary" >Submit</button> <button type="reset" class="btn btn-default">Clear</button>
 		</form>
 
-		<h4>Trade Results</h4>
+		
 
-		<div id="output">
-			<div class="col-md-6 team1-results">
+		<div id="output" class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">Trade Results</h4>
 			</div>
 
-			<div class="col-md-6 team2-results">
+			<div class="panel-body">
+				<div class="clearfix">
+					<div class="col-md-6 team1-results">
+					</div>
+
+					<div class="col-md-6 team2-results">
+					</div>
+				</div>
+
+				<div class="results">
+					<em>Select your players and hit submit to see your results.</em>
+				</div>
 			</div>
+
 		</div>
 
 		<h3>Running Backs</h3>
@@ -147,74 +175,122 @@
 					}
 				);
 			}
+
+			var scoringSystem = $('input[name="scoringSystem"]:checked').val();
 			
 			// let's add the values for team 1
 			var p1t1v = getPlayerByName(p1t1);
 			if (p1t1v != '') {
-				var p1t1value = Number(p1t1v[0].Stnd);
+				if (scoringSystem = 'PPR') {
+					var p1t1value = Number(p1t1v[0].PPR);
+				} else {
+					var p1t1value = Number(p1t1v[0].Stnd);
+				}
 			} else {
 				p1t1value = 0;
 			}
 
 			var p1t2v = getPlayerByName(p1t2);
 			if (p1t2v != '') {
-				var p1t2value = Number(p1t2v[0].Stnd);
+				if (scoringSystem = 'PPR') {
+					var p1t2value = Number(p1t2v[0].PPR);
+				} else {
+					var p1t2value = Number(p1t2v[0].Stnd);
+				}
 			} else {
 				p1t2value = 0;
 			}
 
 			var p2t1v = getPlayerByName(p2t1);
 			if (p2t1v != '') {
-				var p2t1value = Number(p2t1v[0].Stnd);
+				if (scoringSystem = 'PPR') {
+					var p2t1value = Number(p2t1v[0].PPR);
+				} else {
+					var p2t1value = Number(p2t1v[0].Stnd);
+				}
 			} else {
 				p2t1value = 0;
 			}
 			var p2t2v = getPlayerByName(p2t2);
 			if (p2t2v != '') {
-				var p2t2value = Number(p2t2v[0].Stnd);
+				if (scoringSystem = 'PPR') {
+					var p2t2value = Number(p2t2v[0].PPR);
+				} else {
+					var p2t2value = Number(p2t2v[0].Stnd);
+				}
 			} else {
 				p2t2value = 0;
 			}
 
 			var p3t1v = getPlayerByName(p3t1);
 			if (p3t1v != '') {
-				var p3t1value = Number(p3t1v[0].Stnd);
+				if (scoringSystem = 'PPR') {
+					var p3t1value = Number(p3t1v[0].PPR);
+				} else {
+					var p3t1value = Number(p3t1v[0].Stnd);
+				}
 			} else {
 				p3t1value = 0;
 			}
 			var p3t2v = getPlayerByName(p3t2);
 			if (p3t2v != '') {
-				var p3t2value = Number(p3t2v[0].Stnd);
+				if (scoringSystem = 'PPR') {
+					var p3t2value = Number(p3t2v[0].PPR);
+				} else {
+					var p3t2value = Number(p3t2v[0].Stnd);
+				}
 			} else {
 				p3t2value = 0;
 			}
 
 			var p4t1v = getPlayerByName(p4t1);
 			if (p4t1v != '') {
-				var p4t1value = Number(p4t1v[0].Stnd);
+				if (scoringSystem = 'PPR') {
+					var p4t1value = Number(p4t1v[0].PPR);
+				} else {
+					var p4t1value = Number(p4t1v[0].Stnd);
+				}
 			} else {
 				p4t1value = 0;
 			}
 			var p4t2v = getPlayerByName(p4t2);
 			if (p4t2v != '') {
-				var p4t2value = Number(p4t2v[0].Stnd);
+				if (scoringSystem = 'PPR') {
+					var p4t2value = Number(p4t2v[0].PPR);
+				} else {
+					var p4t2value = Number(p4t2v[0].Stnd);
+				}
 			} else {
 				p4t2value = 0;
 			}
 
 			var team1value = p1t1value + p2t1value + p3t1value + p4t1value
 			var team2value = p1t2value + p2t2value + p3t2value + p4t2value
+			var difference = team2value - team1value;
 
-
-			$('#output .team1-results').html("Team 1 is giving up players with a trade value of " + team1value + " in this deal.")
-			$('#output .team2-results').html("Team 2 is giving up players with a trade value of " + team2value + " in this deal.")
+			if (difference >= 7) {
+				$('#output .results').removeClass('alert-warning alert-info alert-danger').addClass('alert alert-success');
+				$('#output .results').html("This is a <strong>great</strong> deal for you! You are getting " + difference + " points worth of value compared to your trading partner.")
+			} else if (difference <= 6 && difference >= 0) {
+				$('#output .results').removeClass('alert-warning alert-success alert-danger').addClass('alert alert-info');
+				$('#output .results').html("This is a <strong>fair</strong> deal, though slightly in your favor. You are getting " + difference + " points worth of value compared to your trading partner.")
+			} else if (difference <= 0 && difference >= -6) {
+				$('#output .results').removeClass('alert-success alert-info alert-danger').addClass('alert alert-warning');
+				$('#output .results').html("This is a <strong>fair</strong> deal, though slightly in the other team's favor. You are getting " + difference + " points worth of value compared to your trading partner.")
+			} else if (difference <= -7) {
+				$('#output .results').removeClass('alert-warning alert-info alert-success').addClass('alert alert-danger');
+				$('#output .results').html("This is a <strong>bad</strong> deal for you! You are getting " + difference + " points worth of value compared to your trading partner.")
+			}
+			$('#output .team1-results').html("<h5>You are giving up players with a trade value of " + team1value + " in this deal.</h5>")
+			$('#output .team2-results').html("<h5>Your trading partner is giving up players with a trade value of " + team2value + " in this deal.</h5>")
 
 			return false;
 		});
 
 		// reset everything
 		$('button[type=reset]').click( function() {
-			$('#output div').html("");
+			$('#output .col-md-6').html("");
+			$('#output .results').html("<em>Select your players and hit submit to see your results.</em>").removeClass('alert alert-success alert-danger alert-warning alert-info');
 			$('.player-name').val("").trigger("chosen:updated");
 		});
 
