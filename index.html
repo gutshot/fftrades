@@ -1,0 +1,223 @@
+<html>
+<head>
+<title>Fantasy Football Trade Evaluator</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css">
+
+	<style type="text/css">
+	.title {
+		background: #ccc;
+		font-weight: bold;
+	}
+	</style>
+
+	<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="//lightswitch05.github.io/table-to-json/javascripts/jquery.tabletojson.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Fantasy Football Trade Evaluator</h1>
+		<form id="tradeEvaluator">
+			<div class="col-md-6">
+				<h3>Team 1</h3>
+				<div class="form-group">
+					<label for="player1team1">Player 1</label>
+					<select class="form-control player-name team1" id="player1team1">
+						<option value="">Select a player...</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="player2team1">Player 2</label>
+					<select class="form-control player-name team1" id="player2team1">
+						<option value="">Select a player...</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="player3team1">Player 3</label>
+					<select class="form-control player-name team1" id="player3team1">
+						<option value="">Select a player...</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="player4team1">Player 4</label>
+					<select class="form-control player-name team1" id="player4team1">
+						<option value="">Select a player...</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h3>Team 2</h3>
+				<div class="form-group">
+					<label for="player1team2">Player 1</label>
+					<select class="form-control player-name team1" id="player1team2">
+						<option value="" selected>Select a player...</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="player2team2">Player 2</label>
+					<select class="form-control player-name team1" id="player2team2">
+						<option value="">Select a player...</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="player3team2">Player 3</label>
+					<select class="form-control player-name team1" id="player3team2">
+						<option value="">Select a player...</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="player4team2">Player 4</label>
+					<select class="form-control player-name team1" id="player4team2">
+						<option value="">Select a player...</option>
+					</select>
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-primary" >Submit</button> <button type="reset" class="btn btn-default">Clear</button>
+		</form>
+
+		<h4>Trade Results</h4>
+
+		<div id="output">
+			<div class="col-md-6 team1-results">
+			</div>
+
+			<div class="col-md-6 team2-results">
+			</div>
+		</div>
+
+		<h3>Running Backs</h3>
+		<table id="runningbacks" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>	Player</td><td>	Stnd</td><td>	PPR</td> </tr><tr class="row1"><td>	David Johnson, ARI</td><td>	38</td><td>	41</td> </tr><tr class="row1"><td>	Le'Veon Bell, PIT</td><td>	36</td><td>	40</td> </tr><tr class="row1"><td>	Ezekiel Elliott, DAL</td><td>	32</td><td>	34</td> </tr><tr class="row1"><td>	LeSean McCoy, BUF</td><td>	30</td><td>	32</td> </tr><tr class="row1"><td>	DeMarco Murray, TEN</td><td>	27</td><td>	30</td> </tr><tr class="row1"><td>	Melvin Gordon, SD</td><td>	27</td><td>	29</td> </tr><tr class="row1"><td>	Lamar Miller, HOU</td><td>	25</td><td>	27</td> </tr><tr class="row1"><td>	C.J. Anderson, DEN</td><td>	25</td><td>	25</td> </tr><tr class="row1"><td>	Todd Gurley, LAR</td><td>	23</td><td>	23</td> </tr><tr class="row1"><td>	Carlos Hyde, SF</td><td>	20</td><td>	21</td> </tr><tr class="row1"><td>	Mark Ingram, NO</td><td>	19</td><td>	21</td> </tr><tr class="row1"><td>	Jamaal Charles, KC</td><td>	18</td><td>	21</td> </tr><tr class="row1"><td>	Devonta Freeman, ATL</td><td>	18</td><td>	20</td> </tr><tr class="row1"><td>	Matt Forte, NYJ</td><td>	17</td><td>	21</td> </tr><tr class="row1"><td>	Christine Michael, SEA</td><td>	17</td><td>	18</td> </tr><tr class="row1"><td>	Jordan Howard, CHI</td><td>	15</td><td>	17</td> </tr><tr class="row1"><td>	Jeremy Hill, CIN</td><td>	15</td><td>	16</td> </tr><tr class="row1"><td>	Eddie Lacy, GB</td><td>	15</td><td>	16</td> </tr><tr class="row1"><td>	Isaiah Crowell, CLE</td><td>	15</td><td>	15</td> </tr><tr class="row1"><td>	LeGarrette Blount, NE</td><td>	15</td><td>	15</td> </tr><tr class="row1"><td>	Doug Martin, TB</td><td>	14</td><td>	15</td> </tr><tr class="row1"><td>	Frank Gore, IND</td><td>	13</td><td>	15</td> </tr><tr class="row1"><td>	Jerick McKinnon, MIN</td><td>	13</td><td>	15</td> </tr><tr class="row1"><td>	Latavius Murray, OAK</td><td>	12</td><td>	14</td> </tr><tr class="row1"><td>	Tevin Coleman, ATL</td><td>	11</td><td>	13</td> </tr><tr class="row1"><td>	Terrance West, BAL</td><td>	10</td><td>	10</td> </tr><tr class="row1"><td>	Ryan Mathews, PHI</td><td>	9</td><td>	10</td> </tr><tr class="row1"><td>	Charles Sims, TB</td><td>	8</td><td>	11</td> </tr><tr class="row1"><td>	Wendell Smallwood, PHI</td><td>	8</td><td>	9</td> </tr><tr class="row1"><td>	Matt Jones, WAS</td><td>	8</td><td>	9</td> </tr><tr class="row1"><td>	T.J. Yeldon, JAC</td><td>	7</td><td>	9</td> </tr><tr class="row1"><td>	Jonathan Stewart, CAR</td><td>	7</td><td>	8</td> </tr><tr class="row1"><td>	Spencer Ware, KC</td><td>	7</td><td>	8</td> </tr><tr class="row1"><td>	Orleans Darkwa, NYG</td><td>	7</td><td>	8</td> </tr><tr class="row1"><td>	Kenneth Dixon, BAL</td><td>	7</td><td>	7</td> </tr><tr class="row1"><td>	Theo Riddick, DET</td><td>	6</td><td>	9</td> </tr><tr class="row1"><td>	Giovani Bernard, CIN</td><td>	6</td><td>	8</td> </tr><tr class="row1"><td>	Dwayne Washington, DET</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Arian Foster, MIA</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Rashad Jennings, NYG</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	DeAngelo Williams, PIT</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Thomas Rawls, SEA</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Derrick Henry, TEN</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Chris Ivory, JAC</td><td>	5</td><td>	6</td> </tr></tbody></table>
+
+		<h3>Wide Receivers</h3>
+		<table id="widereceivers" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>	Player</td><td>	Stnd</td><td>	PPR</td> </tr><tr class="row1"><td>	Antonio Brown, PIT</td><td>	40</td><td>	44</td> </tr><tr class="row1"><td>	Julio Jones, ATL</td><td>	39</td><td>	43</td> </tr><tr class="row1"><td>	A.J. Green, CIN</td><td>	37</td><td>	41</td> </tr><tr class="row1"><td>	Mike Evans, TB</td><td>	34</td><td>	38</td> </tr><tr class="row1"><td>	Allen Robinson, JAC</td><td>	29</td><td>	32</td> </tr><tr class="row1"><td>	Jordy Nelson, GB</td><td>	26</td><td>	28</td> </tr><tr class="row1"><td>	Demaryius Thomas, DEN</td><td>	24</td><td>	27</td> </tr><tr class="row1"><td>	Odell Beckham, NYG</td><td>	24</td><td>	27</td> </tr><tr class="row1"><td>	Kelvin Benjamin, CAR</td><td>	23</td><td>	26</td> </tr><tr class="row1"><td>	DeAndre Hopkins, HOU</td><td>	23</td><td>	26</td> </tr><tr class="row1"><td>	Marvin Jones, DET</td><td>	20</td><td>	23</td> </tr><tr class="row1"><td>	Larry Fitzgerald, ARI</td><td>	19</td><td>	22</td> </tr><tr class="row1"><td>	Brandon Marshall, NYJ</td><td>	18</td><td>	21</td> </tr><tr class="row1"><td>	Jarvis Landry, MIA</td><td>	17</td><td>	21</td> </tr><tr class="row1"><td>	Emmanuel Sanders, DEN</td><td>	17</td><td>	20</td> </tr><tr class="row1"><td>	Doug Baldwin, SEA</td><td>	17</td><td>	20</td> </tr><tr class="row1"><td>	T.Y. Hilton, IND</td><td>	17</td><td>	19</td> </tr><tr class="row1"><td>	Alshon Jeffery, CHI</td><td>	16</td><td>	19</td> </tr><tr class="row1"><td>	Dez Bryant, DAL</td><td>	16</td><td>	19</td> </tr><tr class="row1"><td>	Brandin Cooks, NO</td><td>	16</td><td>	18</td> </tr><tr class="row1"><td>	Stefon Diggs, MIN</td><td>	15</td><td>	19</td> </tr><tr class="row1"><td>	Julian Edelman, NE</td><td>	15</td><td>	18</td> </tr><tr class="row1"><td>	Amari Cooper, OAK</td><td>	15</td><td>	17</td> </tr><tr class="row1"><td>	Jordan Matthews, PHI</td><td>	14</td><td>	17</td> </tr><tr class="row1"><td>	Will Fuller, HOU</td><td>	14</td><td>	16</td> </tr><tr class="row1"><td>	Willie Snead, NO</td><td>	13</td><td>	16</td> </tr><tr class="row1"><td>	Michael Crabtree, OAK</td><td>	13</td><td>	15</td> </tr><tr class="row1"><td>	Terrelle Pryor, CLE</td><td>	12</td><td>	14</td> </tr><tr class="row1"><td>	Sterling Shepard, NYG</td><td>	12</td><td>	14</td> </tr><tr class="row1"><td>	DeSean Jackson, WAS</td><td>	11</td><td>	13</td> </tr><tr class="row1"><td>	John Brown, ARI</td><td>	9</td><td>	12</td> </tr><tr class="row1"><td>	Eric Decker, NYJ</td><td>	9</td><td>	11</td> </tr><tr class="row1"><td>	Travis Benjamin, SD</td><td>	9</td><td>	11</td> </tr><tr class="row1"><td>	Steve Smith, BAL</td><td>	8</td><td>	10</td> </tr><tr class="row1"><td>	Jeremy Maclin, KC</td><td>	8</td><td>	10</td> </tr><tr class="row1"><td>	DeVante Parker, MIA</td><td>	8</td><td>	10</td> </tr><tr class="row1"><td>	Michael Thomas, NO</td><td>	8</td><td>	10</td> </tr><tr class="row1"><td>	Michael Floyd, ARI</td><td>	8</td><td>	9</td> </tr><tr class="row1"><td>	Tyrell Williams, SD</td><td>	8</td><td>	9</td> </tr><tr class="row1"><td>	Randall Cobb, GB</td><td>	7</td><td>	9</td> </tr><tr class="row1"><td>	Phillip Dorsett, IND</td><td>	7</td><td>	9</td> </tr><tr class="row1"><td>	Mike Wallace, BAL</td><td>	7</td><td>	8</td> </tr><tr class="row1"><td>	Jamison Crowder, WAS</td><td>	6</td><td>	9</td> </tr><tr class="row1"><td>	Eddie Royal, CHI</td><td>	6</td><td>	8</td> </tr><tr class="row1"><td>	Quincy Enunwa, NYJ</td><td>	6</td><td>	8</td> </tr><tr class="row1"><td>	Sammie Coates, PIT</td><td>	6</td><td>	8</td> </tr><tr class="row1"><td>	Tyler Lockett, SEA</td><td>	6</td><td>	8</td> </tr><tr class="row1"><td>	Donte Moncrief, IND</td><td>	6</td><td>	7</td> </tr></tbody></table>
+
+		<h3>Tight Ends</h3>
+		<table id="tightends" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>	Player</td><td>	Stnd</td><td>	PPR</td> </tr><tr class="row1"><td>	Rob Gronkowski, NE</td><td>	24</td><td>	26</td> </tr><tr class="row1"><td>	Greg Olsen, CAR</td><td>	15</td><td>	17</td> </tr><tr class="row1"><td>	Jordan Reed, WAS</td><td>	15</td><td>	17</td> </tr><tr class="row1"><td>	Kyle Rudolph, MIN</td><td>	13</td><td>	15</td> </tr><tr class="row1"><td>	Zach Ertz, PHI</td><td>	9</td><td>	11</td> </tr><tr class="row1"><td>	Delanie Walker, TEN</td><td>	9</td><td>	11</td> </tr><tr class="row1"><td>	Jimmy Graham, SEA</td><td>	8</td><td>	10</td> </tr><tr class="row1"><td>	Tyler Eifert, CIN</td><td>	8</td><td>	8</td> </tr><tr class="row1"><td>	Coby Fleener, NO</td><td>	7</td><td>	8</td> </tr><tr class="row1"><td>	Eric Ebron, DET</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Travis Kelce, KC</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Martellus Bennett, NE</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Dennis Pitta, BAL</td><td>	5</td><td>	7</td> </tr><tr class="row1"><td>	Zach Miller, CHI</td><td>	5</td><td>	7</td> </tr><tr class="row1"><td>	Gary Barnidge, CLE</td><td>	5</td><td>	7</td> </tr><tr class="row1"><td>	Cameron Brate, TB</td><td>	5</td><td>	7</td> </tr><tr class="row1"><td>	Julius Thomas, JAC</td><td>	5</td> 	<td>6</td> </tr></tbody></table>
+
+		<h3>Quarterbacks</h3>
+		<table id="quarterbacks" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>	Player</td><td>	Stnd</td><td>	PPR</td> </tr><tr class="row1"><td>	Cam Newton, CAR</td><td>	19</td><td>	19</td> </tr><tr class="row1"><td>	Aaron Rodgers, GB</td><td>	18</td><td>	18</td> </tr><tr class="row1"><td>	Drew Brees, NO</td><td>	17</td><td>	17</td> </tr><tr class="row1"><td>	Tom Brady, NE</td><td>	16</td><td>	16</td> </tr><tr class="row1"><td>	Matt Ryan, ATL</td><td>	14</td><td>	14</td> </tr><tr class="row1"><td>	Ben Roethlisberger, PIT</td><td>	14</td><td>	14</td> </tr><tr class="row1"><td>	Andrew Luck, IND</td><td>	13</td><td>	13</td> </tr><tr class="row1"><td>	Russell Wilson, SEA</td><td>	13</td><td>	13</td> </tr><tr class="row1"><td>	Matthew Stafford, DET</td><td>	12</td><td>	12</td> </tr><tr class="row1"><td>	Derek Carr, OAK</td><td>	11</td><td>	11</td> </tr><tr class="row1"><td>	Philip Rivers, SD</td><td>	9</td><td>	9</td> </tr><tr class="row1"><td>	Carson Palmer, ARI</td><td>	8</td><td>	8</td> </tr><tr class="row1"><td>	Eli Manning, NYG</td><td>	8</td><td>	8</td> </tr><tr class="row1"><td>	Carson Wentz, PHI</td><td>	8</td><td>	8</td> </tr><tr class="row1"><td>	Jameis Winston, TB</td><td>	7</td><td>	7</td> </tr></tbody></table>
+
+		<h3>DSTs</h3>
+		<table id="dsts" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>	Player</td><td>	Stnd</td><td>	PPR</td> </tr><tr class="row1"><td>Broncos DST</td><td>7</td><td>7</td> </tr><tr class="row1"><td>Vikings DST</td><td>7</td><td>7</td> </tr><tr class="row1"><td>Seahawks DST</td><td>7</td><td>7</td> </tr></tbody></table>
+	</div>
+
+
+
+	<script>
+		(function($){$.concat||$.extend({concat:function(b,c){var a=[];for(var x in arguments)if(typeof a=='object')a=a.concat(arguments[x]);return a}});})(jQuery);
+
+		var runningBacks = $('#runningbacks').tableToJSON();
+		var wideReceivers = $('#widereceivers').tableToJSON();
+		var tightEnds = $('#tightends').tableToJSON();
+		var quarterbacks = $('#quarterbacks').tableToJSON();
+		var DSTs = $('#dsts').tableToJSON();
+		var fullData = $.concat(runningBacks, wideReceivers, tightEnds, quarterbacks, DSTs);
+		
+		var $select = $('.player-name'); 
+			$.each(fullData,function(i, player)
+			{
+			    $select.append('<option>' + fullData[i].Player + '</option>');
+			});
+		$('.player-name').chosen();
+
+		$('#tradeEvaluator').submit( function() {
+
+			// get player names
+			var p1t1 = $('#player1team1').val();
+			var p2t1 = $('#player2team1').val();
+			var p3t1 = $('#player3team1').val();
+			var p4t1 = $('#player4team1').val();
+
+			var p1t2 = $('#player1team2').val();
+			var p2t2 = $('#player2team2').val();
+			var p3t2 = $('#player3team2').val();
+			var p4t2 = $('#player4team2').val();
+
+			// first we need to get the player's numerical values
+			function getPlayerByName(Player) {
+				return fullData.filter(
+					function(data) {
+						return data.Player == Player;
+					}
+				);
+			}
+			
+			// let's add the values for team 1
+			var p1t1v = getPlayerByName(p1t1);
+			if (p1t1v != '') {
+				var p1t1value = Number(p1t1v[0].Stnd);
+			} else {
+				p1t1value = 0;
+			}
+
+			var p1t2v = getPlayerByName(p1t2);
+			if (p1t2v != '') {
+				var p1t2value = Number(p1t2v[0].Stnd);
+			} else {
+				p1t2value = 0;
+			}
+
+			var p2t1v = getPlayerByName(p2t1);
+			if (p2t1v != '') {
+				var p2t1value = Number(p2t1v[0].Stnd);
+			} else {
+				p2t1value = 0;
+			}
+			var p2t2v = getPlayerByName(p2t2);
+			if (p2t2v != '') {
+				var p2t2value = Number(p2t2v[0].Stnd);
+			} else {
+				p2t2value = 0;
+			}
+
+			var p3t1v = getPlayerByName(p3t1);
+			if (p3t1v != '') {
+				var p3t1value = Number(p3t1v[0].Stnd);
+			} else {
+				p3t1value = 0;
+			}
+			var p3t2v = getPlayerByName(p3t2);
+			if (p3t2v != '') {
+				var p3t2value = Number(p3t2v[0].Stnd);
+			} else {
+				p3t2value = 0;
+			}
+
+			var p4t1v = getPlayerByName(p4t1);
+			if (p4t1v != '') {
+				var p4t1value = Number(p4t1v[0].Stnd);
+			} else {
+				p4t1value = 0;
+			}
+			var p4t2v = getPlayerByName(p4t2);
+			if (p4t2v != '') {
+				var p4t2value = Number(p4t2v[0].Stnd);
+			} else {
+				p4t2value = 0;
+			}
+
+			var team1value = p1t1value + p2t1value + p3t1value + p4t1value
+			var team2value = p1t2value + p2t2value + p3t2value + p4t2value
+
+
+			$('#output .team1-results').html("Team 1 is giving up players with a trade value of " + team1value + " in this deal.")
+			$('#output .team2-results').html("Team 2 is giving up players with a trade value of " + team2value + " in this deal.")
+
+			return false;
+		});
+
+		// reset everything
+		$('button[type=reset]').click( function() {
+			$('#output div').html("");
+			$('.player-name').val("").trigger("chosen:updated");
+		});
+
+	</script>
+</body>
+</html>
