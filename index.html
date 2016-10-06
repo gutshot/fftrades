@@ -281,19 +281,29 @@
 			var team2value = p1t2value + p2t2value + p3t2value + p4t2value
 			var difference = team2value - team1value;
 
-			if (difference >= 7) {
+			if (difference >= 10) {
 				$('#output .results').removeClass('alert-warning alert-info alert-danger').addClass('alert alert-success');
-				$('#output .results').html("This is a <strong>great</strong> deal for you! You are getting " + difference + " points worth of value compared to your trading partner.")
-			} else if (difference <= 6 && difference >= 0) {
+				$('#output .results').html("This is a <strong>great</strong> deal for you! You are getting " + difference + " points worth of value compared to your trading partner.");
+			} else if (difference <= 9 && difference >= 5) {
+				$('#output .results').removeClass('alert-warning alert-info alert-danger').addClass('alert alert-success');
+				$('#output .results').html("This is a <strong>good</strong> deal for you. You are getting " + difference + " points worth of value compared to your trading partner.");
+			} else if (difference <= 4 && difference >= 1) {
 				$('#output .results').removeClass('alert-warning alert-success alert-danger').addClass('alert alert-info');
-				$('#output .results').html("This is a <strong>fair</strong> deal, though slightly in your favor. You are getting " + difference + " points worth of value compared to your trading partner.")
-			} else if (difference <= 0 && difference >= -6) {
+				$('#output .results').html("This is a pretty <strong>fair</strong> deal, though slightly in your favor. You are getting " + difference + " points worth of value compared to your trading partner.");
+			} else if (difference == 0) {
+				$('#output .results').removeClass('alert-warning alert-success alert-danger').addClass('alert alert-info');
+				$('#output .results').html("This is a perfectly <strong>fair</strong> deal. You are getting " + difference + " points worth of value compared to your trading partner.");
+			} else if (difference <= -1 && difference >= -4) {
 				$('#output .results').removeClass('alert-success alert-info alert-danger').addClass('alert alert-warning');
-				$('#output .results').html("This is a <strong>fair</strong> deal, though slightly in the other team's favor. You are getting " + difference + " points worth of value compared to your trading partner.")
-			} else if (difference <= -7) {
+				$('#output .results').html("This is a pretty <strong>fair</strong> deal, though slightly in the other team's favor. You are getting " + difference + " points worth of value compared to your trading partner.");
+			} else if (difference <= -5 && difference >= -9) {
 				$('#output .results').removeClass('alert-warning alert-info alert-success').addClass('alert alert-danger');
-				$('#output .results').html("This is a <strong>bad</strong> deal for you! You are getting " + difference + " points worth of value compared to your trading partner.")
+				$('#output .results').html("This is a <strong>bad</strong> deal for you. You are getting " + difference + " points worth of value compared to your trading partner.");
+			} else if (difference <= -10) {
+				$('#output .results').removeClass('alert-warning alert-info alert-success').addClass('alert alert-danger');
+				$('#output .results').html("This is a <strong>terrible</strong> deal for you! What are you thinking? You are getting " + difference + " points worth of value compared to your trading partner.");
 			}
+
 			$('#output .team1-results').html("<h5>You are giving up players with a trade value of " + team1value + " in this deal.</h5>")
 			$('#output .team2-results').html("<h5>Your trading partner is giving up players with a trade value of " + team2value + " in this deal.</h5>")
 
