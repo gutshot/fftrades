@@ -96,8 +96,15 @@
 				<div class="col-md-12">
 					<div class="form-group">
 						<label for="scoringSystem">Scoring System</label> <br/>
-						<input type="radio" name="scoringSystem" value="Stnd" checked="checked"> Standard
-						<input type="radio" name="scoringSystem" value="PPR"> PPR
+						<label class="radio-inline">
+							<input type="radio" name="scoringSystem" value="Stnd" checked="checked"> Standard
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="scoringSystem" value="PPR"> PPR
+						</label>
+						<label class="radio-inline">	
+							<input type="radio" name="scoringSystem" value="Half"> Half PPR
+						</label>
 					</div>
 
 					<button type="submit" class="btn btn-primary" >Submit</button> <button type="reset" class="btn btn-default">Clear</button>
@@ -153,6 +160,7 @@
 	<script>
 		(function($){$.concat||$.extend({concat:function(b,c){var a=[];for(var x in arguments)if(typeof a=='object')a=a.concat(arguments[x]);return a}});})(jQuery);
 
+		// convert tables to JSON objects
 		var runningBacks = $('#runningbacks').tableToJSON();
 		var wideReceivers = $('#widereceivers').tableToJSON();
 		var tightEnds = $('#tightends').tableToJSON();
@@ -160,6 +168,7 @@
 		var DSTs = $('#dsts').tableToJSON();
 		var fullData = $.concat(runningBacks, wideReceivers, tightEnds, quarterbacks, DSTs);
 		
+		// build select fields
 		var $select = $('.player-name'); 
 			$.each(fullData,function(i, player)
 			{
@@ -167,6 +176,7 @@
 			});
 		$('.player-name').chosen();
 
+		// trade submitted ... calculating values ... beep boop
 		$('#tradeEvaluator').submit( function() {
 
 			// get player names
@@ -180,7 +190,16 @@
 			var p3t2 = $('#player3team2').val();
 			var p4t2 = $('#player4team2').val();
 
-			// first we need to get the player's numerical values
+			// get scoring system
+			var scoringSystem = $('input[name="scoringSystem"]:checked').val();
+
+			// function to calculate half PPR values (average of stnd and PPR)
+			function halfPPR(Player) {
+				var halfPPRvalue = ((Number(Player[0].Stnd) + Number(Player[0].PPR)) / 2).toFixed();
+				return Number(halfPPRvalue);
+			}
+
+			// first we need to get the player object
 			function getPlayerByName(Player) {
 				return fullData.filter(
 					function(data) {
@@ -189,98 +208,29 @@
 				);
 			}
 
-			var scoringSystem = $('input[name="scoringSystem"]:checked').val();
-			
-			// let's add the values for team 1
-			var p1t1v = getPlayerByName(p1t1);
-			if (p1t1v != '') {
-				if (scoringSystem == 'PPR') {
-					var p1t1value = Number(p1t1v[0].PPR);
+			// take player object and calculate their value based on scoring system selected
+			function calculatePlayerValue(Player) {
+				var playerObject = getPlayerByName(Player);
+				if (playerObject != '') {
+					if (scoringSystem == 'Stnd') {
+						 return Number(playerObject[0].Stnd);
+					} else if (scoringSystem == 'PPR') {
+						return Number(playerObject[0].PPR);
+					} else {
+						return halfPPR(playerObject);
+					}
 				} else {
-					var p1t1value = Number(p1t1v[0].Stnd);
+					return 0;
 				}
-			} else {
-				p1t1value = 0;
 			}
 
-			var p1t2v = getPlayerByName(p1t2);
-			if (p1t2v != '') {
-				if (scoringSystem =='PPR') {
-					var p1t2value = Number(p1t2v[0].PPR);
-				} else {
-					var p1t2value = Number(p1t2v[0].Stnd);
-				}
-			} else {
-				p1t2value = 0;
-			}
-
-			var p2t1v = getPlayerByName(p2t1);
-			if (p2t1v != '') {
-				if (scoringSystem == 'PPR') {
-					var p2t1value = Number(p2t1v[0].PPR);
-				} else {
-					var p2t1value = Number(p2t1v[0].Stnd);
-				}
-			} else {
-				p2t1value = 0;
-			}
-			var p2t2v = getPlayerByName(p2t2);
-			if (p2t2v != '') {
-				if (scoringSystem == 'PPR') {
-					var p2t2value = Number(p2t2v[0].PPR);
-				} else {
-					var p2t2value = Number(p2t2v[0].Stnd);
-				}
-			} else {
-				p2t2value = 0;
-			}
-
-			var p3t1v = getPlayerByName(p3t1);
-			if (p3t1v != '') {
-				if (scoringSystem == 'PPR') {
-					var p3t1value = Number(p3t1v[0].PPR);
-				} else {
-					var p3t1value = Number(p3t1v[0].Stnd);
-				}
-			} else {
-				p3t1value = 0;
-			}
-			var p3t2v = getPlayerByName(p3t2);
-			if (p3t2v != '') {
-				if (scoringSystem == 'PPR') {
-					var p3t2value = Number(p3t2v[0].PPR);
-				} else {
-					var p3t2value = Number(p3t2v[0].Stnd);
-				}
-			} else {
-				p3t2value = 0;
-			}
-
-			var p4t1v = getPlayerByName(p4t1);
-			if (p4t1v != '') {
-				if (scoringSystem == 'PPR') {
-					var p4t1value = Number(p4t1v[0].PPR);
-				} else {
-					var p4t1value = Number(p4t1v[0].Stnd);
-				}
-			} else {
-				p4t1value = 0;
-			}
-			var p4t2v = getPlayerByName(p4t2);
-			if (p4t2v != '') {
-				if (scoringSystem == 'PPR') {
-					var p4t2value = Number(p4t2v[0].PPR);
-				} else {
-					var p4t2value = Number(p4t2v[0].Stnd);
-				}
-			} else {
-				p4t2value = 0;
-			}
-
-			var team1value = p1t1value + p2t1value + p3t1value + p4t1value
-			var team2value = p1t2value + p2t2value + p3t2value + p4t2value
+			// add up values for each team and find out the difference
+			var team1value = calculatePlayerValue(p1t1) + calculatePlayerValue(p2t1) + calculatePlayerValue(p3t1) + calculatePlayerValue(p4t1)
+			var team2value = calculatePlayerValue(p1t2) + calculatePlayerValue(p2t2) + calculatePlayerValue(p3t2) + calculatePlayerValue(p4t2)
 			var difference = team2value - team1value;
 
+
+			// provide results and trade dialog
 			if (difference >= 10) {
 				$('#output .results').removeClass('alert-warning alert-info alert-danger').addClass('alert alert-success');
 				$('#output .results').html("This is a <strong>great</strong> deal for you! You are getting " + difference + " points worth of value compared to your trading partner.");
