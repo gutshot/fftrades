@@ -32,7 +32,9 @@
 				</div>
 				<p>This Fantasy Football Trade Evaluator tool uses the trade values from CBS Sports' Dave Richard. You can find his latest articles and rankings <a href="http://www.cbssports.com/writers/dave-richard/">here</a>.</p>
 
-				<p><em><strong>Oct. 11, 2016:</strong> Updated for Week 6</em><br />
+				<h5>Updates:</h5>
+				<p><em><strong>Oct. 13, 2016:</strong> Add replacement level players for each position, which have values one less than the lowest rated player for that position</em><br />
+				<em><strong>Oct. 11, 2016:</strong> Updated for Week 6</em><br />
 				<em><strong>Oct. 8, 2016:</strong> Add half PPR option (average of Standard and PPR values)</em></p>
 			</div>
 		</div>
@@ -161,12 +163,32 @@
 	<script>
 		(function($){$.concat||$.extend({concat:function(b,c){var a=[];for(var x in arguments)if(typeof a=='object')a=a.concat(arguments[x]);return a}});})(jQuery);
 
+		// function for adding generic replacement-level players
+		function addReplacementPlayer(positionGroup, position) {
+			var lastPlayer = positionGroup[Object.keys(positionGroup).length - 1];
+			var lastPlayerPPR = Number(lastPlayer.PPR) - 1;
+			var lastPlayerStnd = Number(lastPlayer.Stnd) - 1;
+
+			positionGroup.push(
+				{ PPR: lastPlayerPPR.toString(), Player: 'Replacement Level ' + position, Stnd: lastPlayerStnd.toString() }
+			);
+		}
+
 		// convert tables to JSON objects
 		var runningBacks = $('#runningbacks').tableToJSON();
 		var wideReceivers = $('#widereceivers').tableToJSON();
 		var tightEnds = $('#tightends').tableToJSON();
 		var quarterbacks = $('#quarterbacks').tableToJSON();
 		var DSTs = $('#dsts').tableToJSON();
+
+		//add replacement level players to JSON objects
+		addReplacementPlayer(runningBacks, "RB");
+		addReplacementPlayer(wideReceivers, "WR");
+		addReplacementPlayer(tightEnds, "TE");
+		addReplacementPlayer(quarterbacks, "QB");
+		addReplacementPlayer(DSTs, "DST");
+
+		// combine all JSON objects into one
 		var fullData = $.concat(runningBacks, wideReceivers, tightEnds, quarterbacks, DSTs);
 		
 		// build select fields
