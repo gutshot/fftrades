@@ -2,11 +2,16 @@
 <head>
 <title>Fantasy Football Trade Evaluator</title>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css">
 
 	<style type="text/css">
+	.jumbotron {
+		margin-top: 2em;
+	}
+	.updates {
+		font-size: 14px;
+	}
 	.title {
 		background: #ccc;
 		font-weight: bold;
@@ -15,26 +20,35 @@
 		padding-left: 0;
 		padding-right: 30px;
 	}
+	.italic {
+		font-style: italic;
+	}
 	</style>
 
-	<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 	<script src="js/jquery.tabletojson.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
+
+
 </head>
 
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="page-header">
+				<div class="jumbotron">
 					<h1>Fantasy Football Trade Evaluator</h1>
+					<hr class="my-4">
+					<p>This Fantasy Football Trade Evaluator tool uses the trade values from CBS Sports' Dave Richard.<br />
+					You can find his latest articles and rankings <a href="http://www.cbssports.com/writers/dave-richard/">here</a>.</p>
 				</div>
-				<p>This Fantasy Football Trade Evaluator tool uses the trade values from CBS Sports' Dave Richard. You can find his latest articles and rankings <a href="http://www.cbssports.com/writers/dave-richard/">here</a>.</p>
+				
 
 				<h5>Updates:</h5>
-				<em><strong>Nov. 15, 2016:</strong> Updated for Week 11</em><br />
-				<p><em><strong>Oct. 13, 2016:</strong> Add replacement level players for each position, which have values one less than the lowest rated player for that position</em><br />
+				<p class="updates"><em><strong>Sept. 1, 2017:</strong> Updated values for 2017 Season</em><br />
+				<em><strong>Oct. 13, 2016:</strong> Add replacement level players for each position, which have values one less than the lowest rated player for that position</em><br />
 				<em><strong>Oct. 8, 2016:</strong> Add half PPR option (average of Standard and PPR values)</em></p>
 			</div>
 		</div>
@@ -43,25 +57,25 @@
 				<div class="col-lg-6">
 					<h3>My Team</h3>
 					<div class="form-group">
-						<label for="player1team1">Player 1</label>
+						<label class="form-control-label" for="player1team1">Player 1</label>
 						<select class="form-control player-name team1" id="player1team1">
 							<option value="">Select a player...</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="player2team1">Player 2</label>
+						<label class="form-control-label" for="player2team1">Player 2</label>
 						<select class="form-control player-name team1" id="player2team1">
 							<option value="">Select a player...</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="player3team1">Player 3</label>
+						<label class="form-control-label" for="player3team1">Player 3</label>
 						<select class="form-control player-name team1" id="player3team1">
 							<option value="">Select a player...</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="player4team1">Player 4</label>
+						<label class="form-control-label" for="player4team1">Player 4</label>
 						<select class="form-control player-name team1" id="player4team1">
 							<option value="">Select a player...</option>
 						</select>
@@ -70,25 +84,25 @@
 				<div class="col-lg-6">
 					<h3>Other Team</h3>
 					<div class="form-group">
-						<label for="player1team2">Player 1</label>
+						<label class="form-control-label" for="player1team2">Player 1</label>
 						<select class="form-control player-name team1" id="player1team2">
 							<option value="" selected>Select a player...</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="player2team2">Player 2</label>
+						<label class="form-control-label" for="player2team2">Player 2</label>
 						<select class="form-control player-name team1" id="player2team2">
 							<option value="">Select a player...</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="player3team2">Player 3</label>
+						<label class="form-control-label" for="player3team2">Player 3</label>
 						<select class="form-control player-name team1" id="player3team2">
 							<option value="">Select a player...</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="player4team2">Player 4</label>
+						<label class="form-control-label" for="player4team2">Player 4</label>
 						<select class="form-control player-name team1" id="player4team2">
 							<option value="">Select a player...</option>
 						</select>
@@ -99,15 +113,21 @@
 				<div class="col-md-12">
 					<div class="form-group">
 						<label for="scoringSystem">Scoring System</label> <br/>
-						<label class="radio-inline">
-							<input type="radio" name="scoringSystem" value="Stnd" checked="checked"> Standard
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="scoringSystem" value="PPR"> PPR
-						</label>
-						<label class="radio-inline">	
-							<input type="radio" name="scoringSystem" value="Half"> Half PPR
-						</label>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class ="form-check-input" type="radio" name="scoringSystem" value="Stnd" checked="checked"> Standard
+							</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">
+								<input class ="form-check-input" type="radio" name="scoringSystem" value="PPR"> PPR
+							</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label">	
+								<input class ="form-check-input" type="radio" name="scoringSystem" value="Half"> Half PPR
+							</label>
+						</div>
 					</div>
 
 					<button type="submit" class="btn btn-primary" >Submit</button> <button type="reset" class="btn btn-default">Clear</button>
@@ -119,12 +139,12 @@
 
 		
 
-		<div id="output" class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">Trade Results</h4>
+		<div id="output" class="card">
+			<div class="card-header">
+				<h4>Trade Results</h4>
 			</div>
 
-			<div class="panel-body">
+			<div class="card-body">
 				<div class="row clearfix">
 					<div class="col-md-6 team1-results">
 					</div>
@@ -140,17 +160,20 @@
 
 		</div>
 
+
+		<hr class="my-4" />
+
 		<h3>Running Backs</h3>
-		<table id="runningbacks" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>	Player</td><td>	Stnd</td><td>	PPR</td> </tr><tr class="row1"><td>	Ezekiel Elliott, DAL</td><td>	44</td><td>	46</td> </tr><tr class="row1"><td>	David Johnson, ARI</td><td>	42</td><td>	44</td> </tr><tr class="row1"><td>	Le'Veon Bell, PIT</td><td>	40</td><td>	43</td> </tr><tr class="row1"><td>	DeMarco Murray, TEN</td><td>	39</td><td>	42</td> </tr><tr class="row1"><td>	Melvin Gordon, SD</td><td>	38</td><td>	41</td> </tr><tr class="row1"><td>	LeSean McCoy, BUF</td><td>	28</td><td>	31</td> </tr><tr class="row1"><td>	Jay Ajayi, MIA</td><td>	26</td><td>	28</td> </tr><tr class="row1"><td>	LeGarrette Blount, NE</td><td>	22</td><td>	22</td> </tr><tr class="row1"><td>	Frank Gore, IND</td><td>	20</td><td>	22</td> </tr><tr class="row1"><td>	Doug Martin, TB</td><td>	20</td><td>	22</td> </tr><tr class="row1"><td>	Latavius Murray, OAK</td><td>	18</td><td>	20</td> </tr><tr class="row1"><td>	Matt Forte, NYJ</td><td>	17</td><td>	18</td> </tr><tr class="row1"><td>	Spencer Ware, KC</td><td>	16</td><td>	18</td> </tr><tr class="row1"><td>	Carlos Hyde, SF</td><td>	16</td><td>	17</td> </tr><tr class="row1"><td>	Lamar Miller, HOU</td><td>	15</td><td>	17</td> </tr><tr class="row1"><td>	Devonta Freeman, ATL</td><td>	15</td><td>	17</td> </tr><tr class="row1"><td>	Mark Ingram, NO</td><td>	14</td><td>	16</td> </tr><tr class="row1"><td>	Jordan Howard, CHI</td><td>	14</td><td>	16</td> </tr><tr class="row1"><td>	Jonathan Stewart, CAR</td><td>	14</td><td>	15</td> </tr><tr class="row1"><td>	Rob Kelley, WAS</td><td>	14</td><td>	14</td> </tr><tr class="row1"><td>	Todd Gurley, LAR</td><td>	13</td><td>	15</td> </tr><tr class="row1"><td>	Devontae Booker, DEN</td><td>	13</td><td>	15</td> </tr><tr class="row1"><td>	Tevin Coleman, ATL</td><td>	13</td><td>	15</td> </tr><tr class="row1"><td>	Jeremy Hill, CIN</td><td>	13</td><td>	13</td> </tr><tr class="row1"><td>	Dion Lewis, NE</td><td>	11</td><td>	13</td> </tr><tr class="row1"><td>	Ryan Mathews, PHI</td><td>	11</td><td>	12</td> </tr><tr class="row1"><td>	Theo Riddick, DET</td><td>	10</td><td>	13</td> </tr><tr class="row1"><td>	James Starks, GB</td><td>	9</td><td>	10</td> </tr><tr class="row1"><td>	Giovani Bernard, CIN</td><td>	8</td><td>	10</td> </tr><tr class="row1"><td>	C.J. Prosise, SEA</td><td>	8</td><td>	10</td> </tr><tr class="row1"><td>	Thomas Rawls, SEA</td><td>	8</td><td>	9</td> </tr><tr class="row1"><td>	Isaiah Crowell, CLE</td><td>	8</td><td>	9</td> </tr><tr class="row1"><td>	Mike Gillislee, BUF</td><td>	8</td><td>	9</td> </tr><tr class="row1"><td>	Darren Sproles, PHI</td><td>	7</td><td>	9</td> </tr><tr class="row1"><td>	Kenneth Dixon,BAL</td><td>	7</td><td>	9</td> </tr><tr class="row1"><td>	T.J. Yeldon, JAC</td><td>	7</td><td>	8</td> </tr><tr class="row1"><td>	Tim Hightower, NO</td><td>	7</td><td>	8</td> </tr><tr class="row1"><td>	Terrance West, BAL</td><td>	7</td><td>	8</td> </tr><tr class="row1"><td>	James White, NE</td><td>	6</td><td>	8</td> </tr><tr class="row1"><td>	Kapri Bibbs, DEN</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Charcandrick West, KC</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Chris Ivory, JAC</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Paul Perkins, NYG</td><td>	5</td><td>	6</td> </tr><tr class="row1"><td>	Bilal Powell, NYJ</td><td>	5</td><td>	6</td> </tr><tr class="row1"><td>	Chris Thompson, WAS</td><td>	5</td><td>	6</td> </tr><tr class="row1"><td>	Christine Michael, SEA</td><td>	5</td><td>	6</td> </tr><tr class="row1"><td>	Jerick McKinnon, MIN</td><td>	5</td><td>	6</td> </tr><tr class="row1"><td>	Dwayne Washington, DET</td><td>	5</td><td>	5</td> </tr><tr class="row1"><td>	Damien Williams, MIA</td><td>	5</td><td>	5</td> </tr><tr class="row1"><td>	Derrick Henry, TEN</td><td>	5</td><td>	5</td> </tr></tbody></table>
+		<table id="runningbacks" class="table table-hover table-bordered" width="100%"><tbody><tr class="title"><td>Player</td><td>Stnd</td><td>PPR</td></tr><tr class="row1"><td>David Johnson</a>, ARI</td><td>40</td><td>43</td></tr><tr class="row1"><td>Le'Veon Bell</a>, PIT</td><td>37</td><td>40</td></tr><tr class="row1"><td>LeSean McCoy</a>, BUF</td><td>32</td><td>34</td></tr><tr class="row1"><td>Melvin Gordon</a>, LAC</td><td>32</td><td>34</td></tr><tr class="row1"><td>Devonta Freeman</a>, ATL</td><td>30</td><td>32</td></tr><tr class="row1"><td>DeMarco Murray</a>, TEN</td><td>25</td><td>27</td></tr><tr class="row1"><td>Jay Ajayi</a>, MIA</td><td>23</td><td>24</td></tr><tr class="row1"><td>Jordan Howard</a>, CHI</td><td>22</td><td>23</td></tr><tr class="row1"><td>Isaiah Crowell</a>, CLE</td><td>20</td><td>21</td></tr><tr class="row1"><td>Ezekiel Elliott</a>, DAL</td><td>20</td><td>21</td></tr><tr class="row1"><td>Todd Gurley</a>, LAR</td><td>20</td><td>21</td></tr><tr class="row1"><td>Leonard Fournette</a>, JAC</td><td>17</td><td>17</td></tr><tr class="row1"><td>Christian McCaffrey</a>, CAR</td><td>16</td><td>19</td></tr><tr class="row1"><td>Dalvin Cook</a>, MIN</td><td>16</td><td>18</td></tr><tr class="row1"><td>Kareem Hunt</a>, KC</td><td>15</td><td>18</td></tr><tr class="row1"><td>Carlos Hyde</a>, SF</td><td>15</td><td>17</td></tr><tr class="row1"><td>Lamar Miller</a>, HOU</td><td>14</td><td>15</td></tr><tr class="row1"><td>Joe Mixon</a>, CIN</td><td>14</td><td>15</td></tr><tr class="row1"><td>C.J. Anderson, DEN</td><td>13</td><td>14</td></tr><tr class="row1"><td>Mark Ingram</a>, NO</td><td>12</td><td>13</td></tr><tr class="row1"><td>Marshawn Lynch</a>, OAK</td><td>12</td><td>12</td></tr><tr class="row1"><td>Ty Montgomery</a>, GB</td><td>11</td><td>13</td></tr><tr class="row1"><td>Doug Martin</a>, TB</td><td>11</td><td>12</td></tr><tr class="row1"><td>Ameer Abdullah</a>, DET</td><td>11</td><td>11</td></tr><tr class="row1"><td>Mike Gillislee</a>, NE</td><td>11</td><td>11</td></tr><tr class="row1"><td>Terrance West</a>, BAL</td><td>10</td><td>11</td></tr><tr class="row1"><td>Rob Kelley</a>, WAS</td><td>10</td><td>10</td></tr><tr class="row1"><td>Bilal Powell</a>, NYJ</td><td>9</td><td>11</td></tr><tr class="row1"><td>Tevin Coleman</a>, ATL</td><td>9</td><td>10</td></tr><tr class="row1"><td>Darren McFadden</a>, DAL</td><td>9</td><td>10</td></tr><tr class="row1"><td>Danny Woodhead</a>, BAL</td><td>8</td><td>11</td></tr><tr class="row1"><td>Frank Gore</a>, IND</td><td>8</td><td>9</td></tr><tr class="row1"><td>Paul Perkins</a>, NYG</td><td>8</td><td>9</td></tr><tr class="row1"><td>Derrick Henry</a>, TEN</td><td>8</td><td>9</td></tr><tr class="row1"><td>Thomas Rawls</a>, SEA</td><td>8</td><td>8</td></tr><tr class="row1"><td>Adrian Peterson</a>, NO</td><td>7</td><td>8</td></tr><tr class="row1"><td>LeGarrette Blount</a>, PHI</td><td>7</td><td>7</td></tr><tr class="row1"><td>James White</a>, NE</td><td>6</td><td>8</td></tr><tr class="row1"><td>Jonathan Stewart</a>, CAR</td><td>6</td><td>7</td></tr><tr class="row1"><td>Jonathan Williams</a>, BUF</td><td>6</td><td>6</td></tr><tr class="row1"><td>Jeremy Hill</a>, CIN</td><td>6</td><td>6</td></tr><tr class="row1"><td>Jamaal Williams</a>, GB</td><td>6</td><td>6</td></tr><tr class="row1"><td>Rex Burkhead</a>, NE</td><td>6</td><td>6</td></tr><tr class="row1"><td>Jacquizz Rodgers</a>, TB</td><td>6</td><td>6</td></tr><tr class="row1"><td>Duke Johnson</a>, CLE</td><td>5</td><td>7</td></tr><tr class="row1"><td>Jamaal Charles</a>, DEN</td><td>5</td><td>6</td></tr><tr class="row1"><td>Theo Riddick</a>, DET</td><td>5</td><td>6</td></tr><tr class="row1"><td>Alvin Kamara</a>, NO</td><td>5</td><td>6</td></tr><tr class="row1"><td>DeAndre Washington</a>, OAK</td><td>5</td><td>6</td></tr><tr class="row1"><td>Darren Sproles</a>, PHI</td><td>5</td><td>6</td></tr><tr class="row1"><td>D'Onta Foreman</a>, HOU</td><td>5</td><td>5</td></tr><tr class="row1"><td>Marlon Mack</a>, IND</td><td>5</td><td>5</td></tr><tr class="row1"><td>Latavius Murray</a>, MIN</td><td>5</td><td>5</td></tr><tr class="row1"><td>Matt Forte</a>, NYJ</td><td>5</td><td>5</td></tr><tr class="row1"><td>Eddie Lacy</a>, SEA</td><td>5</td><td>5</td></tr><tr class="row1"><td>Matt Breida</a>, SF</td><td>5</td><td>5</td></tr><tr class="row1"><td>Samaje Perine</a>, WAS</td><td>5</td><td>5</td></tr></tbody></table>
 
 		<h3>Wide Receivers</h3>
-		<table id="widereceivers" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>	Player</td><td>	Stnd</td><td>	PPR</td> </tr><tr class="row1"><td>	Antonio Brown, PIT</td><td>	43</td><td>	47</td> </tr><tr class="row1"><td>	Julio Jones, ATL</td><td>	42</td><td>	46</td> </tr><tr class="row1"><td>	Mike Evans, TB</td><td>	40</td><td>	44</td> </tr><tr class="row1"><td>	A.J. Green, CIN</td><td>	40</td><td>	44</td> </tr><tr class="row1"><td>	Odell Beckham, NYG</td><td>	31</td><td>	35</td> </tr><tr class="row1"><td>	Jordy Nelson, GB</td><td>	28</td><td>	31</td> </tr><tr class="row1"><td>	Dez Bryant, DAL</td><td>	25</td><td>	27</td> </tr><tr class="row1"><td>	T.Y. Hilton, IND</td><td>	23</td><td>	26</td> </tr><tr class="row1"><td>	Allen Robinson, JAC</td><td>	21</td><td>	24</td> </tr><tr class="row1"><td>	Amari Cooper, OAK</td><td>	19</td><td>	22</td> </tr><tr class="row1"><td>	Demaryius Thomas, DEN</td><td>	18</td><td>	21</td> </tr><tr class="row1"><td>	Brandin Cooks, NO</td><td>	18</td><td>	21</td> </tr><tr class="row1"><td>	Tyrell Williams, SD</td><td>	18</td><td>	21</td> </tr><tr class="row1"><td>	Larry Fitzgerald, ARI</td><td>	17</td><td>	22</td> </tr><tr class="row1"><td>	Davante Adams, GB</td><td>	17</td><td>	21</td> </tr><tr class="row1"><td>	Michael Crabtree, OAK</td><td>	17</td><td>	20</td> </tr><tr class="row1"><td>	Stefon Diggs, MIN</td><td>	16</td><td>	21</td> </tr><tr class="row1"><td>	Michael Thomas, NO</td><td>	16</td><td>	19</td> </tr><tr class="row1"><td>	Doug Baldwin, SEA</td><td>	16</td><td>	19</td> </tr><tr class="row1"><td>	Donte Moncrief, IND</td><td>	15</td><td>	18</td> </tr><tr class="row1"><td>	Randall Cobb, GB</td><td>	14</td><td>	17</td> </tr><tr class="row1"><td>	Jamison Crowder, WAS</td><td>	13</td><td>	16</td> </tr><tr class="row1"><td>	Terrelle Pryor, CLE</td><td>	13</td><td>	16</td> </tr><tr class="row1"><td>	Kelvin Benjamin, CAR</td><td>	12</td><td>	15</td> </tr><tr class="row1"><td>	DeAndre Hopkins, HOU</td><td>	11</td><td>	14</td> </tr><tr class="row1"><td>	Brandon Marshall, NYJ</td><td>	11</td><td>	13</td> </tr><tr class="row1"><td>	Julian Edelman, NE</td><td>	10</td><td>	14</td> </tr><tr class="row1"><td>	Emmanuel Sanders, DEN</td><td>	10</td><td>	13</td> </tr><tr class="row1"><td>	Kenny Britt, LA</td><td>	10</td><td>	12</td> </tr><tr class="row1"><td>	Golden Tate, DET</td><td>	9</td><td>	12</td> </tr><tr class="row1"><td>	Willie Snead, NO</td><td>	9</td><td>	12</td> </tr><tr class="row1"><td>	Steve Smith, BAL</td><td>	9</td><td>	12</td> </tr><tr class="row1"><td>	Rishard Matthews, TEN</td><td>	9</td><td>	11</td> </tr><tr class="row1"><td>	Jordan Matthews, PHI</td><td>	8</td><td>	10</td> </tr><tr class="row1"><td>	Jarvis Landry, MIA</td><td>	7</td><td>	10</td> </tr><tr class="row1"><td>	Cole Beasley, DAL</td><td>	7</td><td>	10</td> </tr><tr class="row1"><td>	Alshon Jeffery, CHI</td><td>	7</td><td>	9</td> </tr><tr class="row1"><td>	Chris Hogan, NE</td><td>	7</td><td>	9</td> </tr><tr class="row1"><td>	Mike Wallace, BAL</td><td>	7</td><td>	8</td> </tr><tr class="row1"><td>	J.J. Nelson, ARI</td><td>	6</td><td>	8</td> </tr><tr class="row1"><td>	Robert Woods, BUF</td><td>	6</td><td>	8</td> </tr><tr class="row1"><td>	Marvin Jones, DET</td><td>	6</td><td>	8</td> </tr><tr class="row1"><td>	John Brown, ARI</td><td>	6</td><td>	7</td> </tr><tr class="row1"><td>	Ty Montgomery, GB</td><td>	5</td><td>	7</td> </tr><tr class="row1"><td>	Mohamed Sanu, ATL</td><td>	5</td><td>	7</td> </tr><tr class="row1"><td>	Jeremy Maclin, KC</td><td>	5</td><td>	7</td> </tr><tr class="row1"><td>	DeSean Jackson, WAS</td><td>	5</td><td>	7</td> </tr></tbody></table>
+		<table id="widereceivers" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>Player</td><td>Stnd</td><td>PPR</td></tr><tr class="row1"><td>Julio Jones</a>, ATL</td><td>37</td><td>40</td></tr><tr class="row1"><td>Antonio Brown</a>, PIT</td><td>37</td><td>40</td></tr><tr class="row1"><td>Odell Beckham</a>, NYG</td><td>34</td><td>37</td></tr><tr class="row1"><td>Mike Evans</a>, TB</td><td>31</td><td>34</td></tr><tr class="row1"><td>A.J. Green, CIN</td><td>30</td><td>33</td></tr><tr class="row1"><td>Jordy Nelson</a>, GB</td><td>29</td><td>32</td></tr><tr class="row1"><td>Dez Bryant</a>, DAL</td><td>28</td><td>30</td></tr><tr class="row1"><td>Michael Thomas</a>, NO</td><td>24</td><td>27</td></tr><tr class="row1"><td>Doug Baldwin</a>, SEA</td><td>20</td><td>23</td></tr><tr class="row1"><td>Amari Cooper</a>, OAK</td><td>18</td><td>21</td></tr><tr class="row1"><td>Brandin Cooks</a>, NE</td><td>18</td><td>20</td></tr><tr class="row1"><td>DeAndre Hopkins</a>, HOU</td><td>17</td><td>20</td></tr><tr class="row1"><td>T.Y. Hilton, IND</td><td>17</td><td>19</td></tr><tr class="row1"><td>Terrelle Pryor</a>, WAS</td><td>17</td><td>19</td></tr><tr class="row1"><td>Demaryius Thomas</a>, DEN</td><td>16</td><td>19</td></tr><tr class="row1"><td>Keenan Allen</a>, LAC</td><td>16</td><td>19</td></tr><tr class="row1"><td>Davante Adams</a>, GB</td><td>14</td><td>16</td></tr><tr class="row1"><td>Alshon Jeffery</a>, PHI</td><td>14</td><td>16</td></tr><tr class="row1"><td>Michael Crabtree</a>, OAK</td><td>13</td><td>16</td></tr><tr class="row1"><td>Jamison Crowder</a>, WAS</td><td>11</td><td>14</td></tr><tr class="row1"><td>Tyreek Hill</a>, KC</td><td>11</td><td>13</td></tr><tr class="row1"><td>Martavis Bryant</a>, PIT</td><td>11</td><td>13</td></tr><tr class="row1"><td>Golden Tate</a>, DET</td><td>10</td><td>13</td></tr><tr class="row1"><td>Sammy Watkins</a>, LAR</td><td>10</td><td>12</td></tr><tr class="row1"><td>DeVante Parker</a>, MIA</td><td>10</td><td>12</td></tr><tr class="row1"><td>Larry Fitzgerald</a>, ARI</td><td>9</td><td>11</td></tr><tr class="row1"><td>Stefon Diggs</a>, MIN</td><td>8</td><td>12</td></tr><tr class="row1"><td>Willie Snead</a>, NO</td><td>8</td><td>11</td></tr><tr class="row1"><td>Kelvin Benjamin</a>, CAR</td><td>8</td><td>10</td></tr><tr class="row1"><td>Allen Robinson</a>, JAC</td><td>8</td><td>10</td></tr><tr class="row1"><td>Tyrell Williams</a>, LAC</td><td>8</td><td>10</td></tr><tr class="row1"><td>Jarvis Landry</a>, MIA</td><td>8</td><td>10</td></tr><tr class="row1"><td>Emmanuel Sanders</a>, DEN</td><td>7</td><td>10</td></tr><tr class="row1"><td>Pierre Garcon</a>, SF</td><td>7</td><td>10</td></tr><tr class="row1"><td>John Brown</a>, ARI</td><td>7</td><td>9</td></tr><tr class="row1"><td>Chris Hogan</a>, NE</td><td>7</td><td>9</td></tr><tr class="row1"><td>Brandon Marshall</a>, NYG</td><td>7</td><td>9</td></tr><tr class="row1"><td>Corey Davis</a>, TEN</td><td>7</td><td>8</td></tr><tr class="row1"><td>Jeremy Maclin</a>, BAL</td><td>6</td><td>8</td></tr><tr class="row1"><td>Randall Cobb</a>, GB</td><td>6</td><td>8</td></tr><tr class="row1"><td>DeSean Jackson</a>, TB</td><td>6</td><td>8</td></tr><tr class="row1"><td>Eric Decker</a>, TEN</td><td>6</td><td>8</td></tr><tr class="row1"><td>Cooper Kupp</a>, LAR</td><td>5</td><td>7</td></tr><tr class="row1"><td>Robby Anderson</a>, NYJ</td><td>5</td><td>7</td></tr><tr class="row1"><td>Mike Wallace</a>, BAL</td><td>5</td><td>6</td></tr><tr class="row1"><td>Kenny Britt</a>, CLE</td><td>5</td><td>6</td></tr><tr class="row1"><td>Donte Moncrief</a>, IND</td><td>5</td><td>6</td></tr><tr class="row1"><td>Ted Ginn</a>, NO</td><td>5</td><td>6</td></tr></tbody></table>
 
 		<h3>Tight Ends</h3>
-		<table id="tightends" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>	Player</td><td>	Stnd</td><td>	PPR</td> </tr><tr class="row1"><td>	Rob Gronkowski, NE</td><td>	30</td><td>	33</td> </tr><tr class="row1"><td>	Delanie Walker, TEN</td><td>	18</td><td>	21</td> </tr><tr class="row1"><td>	Greg Olsen, CAR</td><td>	18</td><td>	20</td> </tr><tr class="row1"><td>	Jimmy Graham, SEA</td><td>	16</td><td>	18</td> </tr><tr class="row1"><td>	Tyler Eifert, CIN</td><td>	16</td><td>	18</td> </tr><tr class="row1"><td>	Jordan Reed, WAS</td><td>	15</td><td>	18</td> </tr><tr class="row1"><td>	Antonio Gates, SD</td><td>	10</td><td>	12</td> </tr><tr class="row1"><td>	Martellus Bennett, NE</td><td>	9</td><td>	11</td> </tr><tr class="row1"><td>	Kyle Rudolph, MIN</td><td>	9</td><td>	11</td> </tr><tr class="row1"><td>	Travis Kelce, KC</td><td>	8</td><td>	10</td> </tr><tr class="row1"><td>	Cameron Brate, TB</td><td>	8</td><td>	9</td> </tr><tr class="row1"><td>	Eric Ebron, DET</td><td>	7</td><td>	9</td> </tr><tr class="row1"><td>	Zach Miller, CHI</td><td>	6</td><td>	8</td> </tr><tr class="row1"><td>	Julius Thomas, JAC</td><td>	5</td><td>	6</td> </tr></tbody></table>
+		<table id="tightends" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>Player</td><td>Stnd</td><td>PPR</td></tr><tr class="row1"><td>Rob Gronkowski</a>, NE</td><td>25</td><td>27</td></tr><tr class="row1"><td>Travis Kelce</a>, KC</td><td>13</td><td>15</td></tr><tr class="row1"><td>Jordan Reed</a>, WAS</td><td>11</td><td>13</td></tr><tr class="row1"><td>Jimmy Graham</a>, SEA</td><td>11</td><td>12</td></tr><tr class="row1"><td>Greg Olsen</a>, CAR</td><td>10</td><td>12</td></tr><tr class="row1"><td>Zach Ertz</a>, PHI</td><td>10</td><td>12</td></tr><tr class="row1"><td>Tyler Eifert</a>, CIN</td><td>9</td><td>10</td></tr><tr class="row1"><td>Kyle Rudolph</a>, MIN</td><td>8</td><td>10</td></tr><tr class="row1"><td>Hunter Henry</a>, LAC</td><td>7</td><td>8</td></tr><tr class="row1"><td>Delanie Walker</a>, TEN</td><td>6</td><td>7</td></tr><tr class="row1"><td>Martellus Bennett</a>, GB</td><td>5</td><td>6</td></tr><tr class="row1"><td>Eric Ebron</a>, DET</td><td>5</td><td>5</td></tr><tr class="row1"><td>Jack Doyle</a>, IND</td><td>5</td><td>5</td></tr><tr class="row1"><td>Evan Engram</a>, NYG</td><td>5</td><td>5</td></tr></tbody></table>
 
 		<h3>Quarterbacks</h3>
-		<table id="quarterbacks" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>	Player</td><td>	Stnd</td><td>	PPR</td> </tr><tr class="row1"><td>	Tom Brady, NE</td><td>	24</td><td>	24</td> </tr><tr class="row1"><td>	Drew Brees, NO</td><td>	22</td><td>	22</td> </tr><tr class="row1"><td>	Aaron Rodgers, GB</td><td>	22</td><td>	22</td> </tr><tr class="row1"><td>	Matt Ryan, ATL</td><td>	21</td><td>	21</td> </tr><tr class="row1"><td>	Marcus Mariota, TEN</td><td>	18</td><td>	18</td> </tr><tr class="row1"><td>	Andrew Luck, IND</td><td>	18</td><td>	18</td> </tr><tr class="row1"><td>	Ben Roethlisberger, PIT</td><td>	16</td><td>	16</td> </tr><tr class="row1"><td>	Russell Wilson, SEA</td><td>	15</td><td>	15</td> </tr><tr class="row1"><td>	Cam Newton, CAR</td><td>	15</td><td>	15</td> </tr><tr class="row1"><td>	Jameis Winston, TB</td><td>	14</td><td>	14</td> </tr><tr class="row1"><td>	Philip Rivers, SD</td><td>	14</td><td>	14</td> </tr><tr class="row1"><td>	Dak Prescott, DAL</td><td>	13</td><td>	13</td> </tr><tr class="row1"><td>	Derek Carr, OAK</td><td>	13</td><td>	13</td> </tr><tr class="row1"><td>	Eli Manning, NYG</td><td>	12</td><td>	12</td> </tr><tr class="row1"><td>	Kirk Cousins, WAS</td><td>	11</td><td>	11</td> </tr><tr class="row1"><td>	Andy Dalton, CIN</td><td>	10</td><td>	10</td> </tr><tr class="row1"><td>	Matthew Stafford, DET</td><td>	9</td><td>	9</td> </tr></tbody></table>
+		<table id="quarterbacks" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>Player</td><td>Stnd</td><td>PPR</td></tr><tr class="row1"><td>Aaron Rodgers</a>, GB</td><td>17</td><td>17</td></tr><tr class="row1"><td>Tom Brady</a>, NE</td><td>16</td><td>16</td></tr><tr class="row1"><td>Drew Brees</a>, NO</td><td>15</td><td>15</td></tr><tr class="row1"><td>Matt Ryan</a>, ATL</td><td>12</td><td>12</td></tr><tr class="row1"><td>Russell Wilson</a>, SEA</td><td>11</td><td>11</td></tr><tr class="row1"><td>Jameis Winston</a>, TB</td><td>11</td><td>11</td></tr><tr class="row1"><td>Marcus Mariota</a>, TEN</td><td>11</td><td>11</td></tr><tr class="row1"><td>Kirk Cousins</a>, WAS</td><td>11</td><td>11</td></tr><tr class="row1"><td>Ben Roethlisberger</a>, PIT</td><td>9</td><td>9</td></tr><tr class="row1"><td>Andrew Luck</a>, IND</td><td>8</td><td>8</td></tr><tr class="row1"><td>Derek Carr</a>, OAK</td><td>8</td><td>8</td></tr><tr class="row1"><td>Cam Newton</a>, CAR</td><td>7</td><td>7</td></tr><tr class="row1"><td>Dak Prescott</a>, DAL</td><td>7</td><td>7</td></tr><tr class="row1"><td>Matthew Stafford</a>, DET</td><td>7</td><td>7</td></tr><tr class="row1"><td>Philip Rivers</a>, LAC</td><td>7</td><td>7</td></tr><tr class="row1"><td>Eli Manning</a>, NYG</td><td>7</td><td>7</td></tr></tbody></table>
 
 		<h3>DSTs</h3>
 		<table id="dsts" class="table table-bordered table-condensed" width="100%"><tbody><tr class="title"><td>Team</td><td>Stnd</td><td>PPR</td> </tr><tr class="row1"><td>	Seahawks DST</td><td>	7</td><td>	7</td> </tr><tr class="row1"><td>	Broncos DST</td><td>	7</td><td>	7</td> </tr><tr class="row1"><td>	Vikings DST</td><td>	7</td><td>	7</td> </tr></tbody></table>
@@ -277,8 +300,8 @@
 				$('#output .results').html("This is a <strong>terrible</strong> deal for you! What are you thinking? You are getting " + difference + " points worth of value compared to your trading partner.");
 			}
 
-			$('#output .team1-results').html("<h5>You are giving up players with a trade value of " + team1value + " in this deal.</h5>")
-			$('#output .team2-results').html("<h5>Your trading partner is giving up players with a trade value of " + team2value + " in this deal.</h5>")
+			$('#output .team1-results').html("<h6>Value of outgoing players: " + team1value + "</h6>")
+			$('#output .team2-results').html("<h6>Value of received players: " + team2value + "</h6>")
 
 			return false;
 		});
