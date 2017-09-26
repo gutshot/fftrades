@@ -25,13 +25,47 @@
 	.italic {
 		font-style: italic;
 	}
+	.hover-card {
+		display: none;
+		width: 20rem;
+		position: absolute;
+		left: 50px;
+	}
+
+	.headshot {
+		width: 70px;
+		height: 82px;
+		margin-right: 20px;
+		background: url('images/headshot-placeholder.jpg');
+	}
+
+	.headshot img {
+		width: 100%;
+	}
+
+	.val {
+		font-weight: bold;
+	}
+
+	.val.up {
+		color: green;
+	}
+
+	.val.same {
+		color: blue;
+	}
+
+	.val.down {
+		color: red;
+	}
 	</style>
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 	<script src="js/jquery.tabletojson.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.hoverintent/1.9.0/jquery.hoverIntent.min.js"></script>
 
 
 </head>
@@ -47,9 +81,9 @@
 					You can find his latest articles and rankings <a href="http://www.cbssports.com/writers/dave-richard/">here</a>.</p>
 				</div>
 				
-
 				<h5>Updates:</h5>
-				<p class="updates"><em><strong>Sept. 19, 2017:</strong> Updated values for Week 3</em><br />
+				<p class="updates"><em><strong>Sept. 26, 2017:</strong> Add player info cards, hover over players in table to see difference between this week and last week's trade value</em><br />
+				<em><strong>Sept. 26, 2017:</strong> Updated values for Week 4</em><br />
 				<em><strong>Oct. 13, 2016:</strong> Add replacement level players for each position, which have values one less than the lowest rated player for that position</em><br />
 				<em><strong>Oct. 8, 2016:</strong> Add half PPR option (average of Standard and PPR values)</em></p>
 			</div>
@@ -166,21 +200,34 @@
 		<hr class="my-4" />
 
 		<h3>Running Backs</h3>
-		<table id="runningbacks" class="table table-hover table-bordered" width="100%"><tbody><tr class="title"><td><strong>Player</strong></td><td><strong>Stnd</strong></td><td><strong>PPR</strong></td></tr><tr class="row1"><td>Le'Veon Bell, PIT</td><td>39</td><td>42</td></tr><tr class="row1"><td>Ezekiel Elliott, DAL</td><td>37</td><td>39</td></tr><tr class="row1"><td>Devonta Freeman, ATL</td><td>35</td><td>37</td></tr><tr class="row1"><td>LeSean McCoy, BUF</td><td>34</td><td>37</td></tr><tr class="row1"><td>Melvin Gordon, LAC</td><td>34</td><td>36</td></tr><tr class="row1"><td>Kareem Hunt, KC</td><td>32</td><td>35</td></tr><tr class="row1"><td>Jay Ajayi, MIA</td><td>29</td><td>30</td></tr><tr class="row1"><td>Todd Gurley, LAR</td><td>28</td><td>30</td></tr><tr class="row1"><td>Leonard Fournette, JAC</td><td>25</td><td>26</td></tr><tr class="row1"><td>Ty Montgomery, GB</td><td>24</td><td>28</td></tr><tr class="row1"><td>C.J. Anderson, DEN</td><td>24</td><td>26</td></tr><tr class="row1"><td>Dalvin Cook, MIN</td><td>20</td><td>23</td></tr><tr class="row1"><td>Carlos Hyde, SF</td><td>19</td><td>21</td></tr><tr class="row1"><td>Marshawn Lynch, OAK</td><td>17</td><td>17</td></tr><tr class="row1"><td>Mike Gillislee, NE</td><td>17</td><td>17</td></tr><tr class="row1"><td>Christian McCaffrey, CAR</td><td>16</td><td>19</td></tr><tr class="row1"><td>Doug Martin, TB</td><td>15</td><td>16</td></tr><tr class="row1"><td>Derrick Henry, TEN</td><td>15</td><td>16</td></tr><tr class="row1"><td>Jordan Howard, CHI</td><td>14</td><td>15</td></tr><tr class="row1"><td>DeMarco Murray, TEN</td><td>14</td><td>15</td></tr><tr class="row1"><td>Lamar Miller, HOU</td><td>13</td><td>15</td></tr><tr class="row1"><td>Joe Mixon, CIN</td><td>13</td><td>14</td></tr><tr class="row1"><td>Isaiah Crowell, CLE</td><td>12</td><td>13</td></tr><tr class="row1"><td>Chris Carson, SEA</td><td>12</td><td>13</td></tr><tr class="row1"><td>Ameer Abdullah, DET</td><td>11</td><td>12</td></tr><tr class="row1"><td>Javorius Allen, BAL</td><td>10</td><td>12</td></tr><tr class="row1"><td>David Johnson, ARI</td><td>10</td><td>11</td></tr><tr class="row1"><td>Terrance West, BAL</td><td>10</td><td>11</td></tr><tr class="row1"><td>Mark Ingram, NO</td><td>10</td><td>11</td></tr><tr class="row1"><td>Tarik Cohen, CHI</td><td>8</td><td>10</td></tr><tr class="row1"><td>Tevin Coleman, ATL</td><td>8</td><td>9</td></tr><tr class="row1"><td>Jonathan Stewart, CAR</td><td>8</td><td>9</td></tr><tr class="row1"><td>Frank Gore, IND</td><td>8</td><td>9</td></tr><tr class="row1"><td>Rob Kelley, WAS</td><td>8</td><td>8</td></tr><tr class="row1"><td>Rex Burkhead, NE</td><td>7</td><td>8</td></tr><tr class="row1"><td>James White, NE</td><td>6</td><td>9</td></tr><tr class="row1"><td>Chris Thompson, WAS</td><td>6</td><td>8</td></tr><tr class="row1"><td>LeGarrette Blount, PHI</td><td>6</td><td>6</td></tr><tr class="row1"><td>Jacquizz Rodgers, TB</td><td>6</td><td>6</td></tr><tr class="row1"><td>Chris Johnson, ARI</td><td>5</td><td>6</td></tr><tr class="row1"><td>Giovani Bernard, CIN</td><td>5</td><td>6</td></tr><tr class="row1"><td>Duke Johnson, CLE</td><td>5</td><td>6</td></tr><tr class="row1"><td>Theo Riddick, DET</td><td>5</td><td>6</td></tr><tr class="row1"><td>Thomas Rawls, SEA</td><td>5</td><td>5</td></tr></tbody></table>
+		<table id="runningbacks" class="table table-hover table-bordered" width="100%"><tbody><tr class="row1 title"><td>Player</td><td>Stnd</td><td>PPR</td></tr><tr class="row1"><td>Kareem Hunt, KC</td><td>39</td><td>42</td></tr><tr class="row1"><td>Le'Veon Bell, PIT</td><td>39</td><td>42</td></tr><tr class="row1"><td>Ezekiel Elliott, DAL</td><td>38</td><td>41</td></tr><tr class="row1"><td>Devonta Freeman, ATL</td><td>37</td><td>39</td></tr><tr class="row1"><td>Todd Gurley, LAR</td><td>34</td><td>36</td></tr><tr class="row1"><td>Melvin Gordon, LAC</td><td>33</td><td>35</td></tr><tr class="row1"><td>LeSean McCoy, BUF</td><td>31</td><td>34</td></tr><tr class="row1"><td>Jay Ajayi, MIA</td><td>28</td><td>29</td></tr><tr class="row1"><td>Leonard Fournette, JAC</td><td>27</td><td>28</td></tr><tr class="row1"><td>Ty Montgomery, GB</td><td>24</td><td>28</td></tr><tr class="row1"><td>C.J. Anderson, DEN</td><td>24</td><td>26</td></tr><tr class="row1"><td>Dalvin Cook, MIN</td><td>23</td><td>26</td></tr><tr class="row1"><td>Carlos Hyde, SF</td><td>22</td><td>24</td></tr><tr class="row1"><td>Jordan Howard, CHI</td><td>18</td><td>20</td></tr><tr class="row1"><td>Christian McCaffrey, CAR</td><td>17</td><td>20</td></tr><tr class="row1"><td>Joe Mixon, CIN</td><td>17</td><td>19</td></tr><tr class="row1"><td>DeMarco Murray, TEN</td><td>16</td><td>17</td></tr><tr class="row1"><td>Mike Gillislee, NE</td><td>16</td><td>16</td></tr><tr class="row1"><td>Doug Martin, TB</td><td>15</td><td>16</td></tr><tr class="row1"><td>Marshawn Lynch, OAK</td><td>15</td><td>15</td></tr><tr class="row1"><td>Chris Carson, SEA</td><td>14</td><td>15</td></tr><tr class="row1"><td>Lamar Miller, HOU</td><td>12</td><td>14</td></tr><tr class="row1"><td>Mark Ingram, NO</td><td>12</td><td>13</td></tr><tr class="row1"><td>Ameer Abdullah, DET</td><td>11</td><td>12</td></tr><tr class="row1"><td>Tarik Cohen, CHI</td><td>10</td><td>12</td></tr><tr class="row1"><td>Derrick Henry, TEN</td><td>10</td><td>11</td></tr><tr class="row1"><td>David Johnson, ARI</td><td>9</td><td>10</td></tr><tr class="row1"><td>Tevin Coleman, ATL</td><td>9</td><td>10</td></tr><tr class="row1"><td>Chris Thompson, WAS</td><td>8</td><td>11</td></tr><tr class="row1"><td>Terrance West, BAL</td><td>8</td><td>9</td></tr><tr class="row1"><td>Jonathan Stewart, CAR</td><td>8</td><td>9</td></tr><tr class="row1"><td>Frank Gore, IND</td><td>8</td><td>9</td></tr><tr class="row1"><td>Isaiah Crowell, CLE</td><td>8</td><td>8</td></tr><tr class="row1"><td>Rob Kelley, WAS</td><td>8</td><td>8</td></tr><tr class="row1"><td>Javorius Allen, BAL</td><td>7</td><td>9</td></tr><tr class="row1"><td>LeGarrette Blount, PHI</td><td>7</td><td>7</td></tr><tr class="row1"><td>Duke Johnson, CLE</td><td>6</td><td>8</td></tr><tr class="row1"><td>Jamaal Charles, DEN</td><td>6</td><td>7</td></tr><tr class="row1"><td>Wendell Smallwood, PHI</td><td>6</td><td>7</td></tr><tr class="row1"><td>James White, NE</td><td>5</td><td>8</td></tr><tr class="row1"><td>Alvin Kamara, NO</td><td>5</td><td>7</td></tr><tr class="row1"><td>Giovani Bernard, CIN</td><td>5</td><td>6</td></tr><tr class="row1"><td>D'Onta Foreman, HOU</td><td>5</td><td>6</td></tr><tr class="row1"><td>Theo Riddick, DET</td><td>5</td><td>6</td></tr><tr class="row1"><td>Rex Burkhead, NE</td><td>5</td><td>6</td></tr><tr class="row1"><td>Jacquizz Rodgers, TB</td><td>5</td><td>5</td></tr></tbody></table>
 
 		<h3>Wide Receivers</h3>
-		<table id="widereceivers" class="table table-bordered table-hover" width="100%"><tbody><tr class="title"><td><strong>Player</strong></td><td><strong>Stnd</strong></td><td><strong>PPR</strong></td></tr><tr class="row1"><td>Antonio Brown, PIT</td><td>38</td><td>41</td></tr><tr class="row1"><td>Julio Jones, ATL</td><td>37</td><td>40</td></tr><tr class="row1"><td>Mike Evans, TB</td><td>31</td><td>34</td></tr><tr class="row1"><td>A.J. Green, CIN</td><td>29</td><td>32</td></tr><tr class="row1"><td>Odell Beckham, NYG</td><td>27</td><td>30</td></tr><tr class="row1"><td>Dez Bryant, DAL</td><td>26</td><td>28</td></tr><tr class="row1"><td>Jordy Nelson, GB</td><td>23</td><td>26</td></tr><tr class="row1"><td>Michael Thomas, NO</td><td>22</td><td>25</td></tr><tr class="row1"><td>Amari Cooper, OAK</td><td>20</td><td>23</td></tr><tr class="row1"><td>Keenan Allen, LAC</td><td>18</td><td>22</td></tr><tr class="row1"><td>Davante Adams, GB</td><td>18</td><td>20</td></tr><tr class="row1"><td>Michael Crabtree, OAK</td><td>17</td><td>20</td></tr><tr class="row1"><td>Doug Baldwin, SEA</td><td>17</td><td>20</td></tr><tr class="row1"><td>Alshon Jeffery, PHI</td><td>17</td><td>19</td></tr><tr class="row1"><td>Demaryius Thomas, DEN</td><td>16</td><td>19</td></tr><tr class="row1"><td>Brandin Cooks, NE</td><td>16</td><td>18</td></tr><tr class="row1"><td>DeAndre Hopkins, HOU</td><td>15</td><td>19</td></tr><tr class="row1"><td>Tyreek Hill, KC</td><td>15</td><td>17</td></tr><tr class="row1"><td>Martavis Bryant, PIT</td><td>15</td><td>17</td></tr><tr class="row1"><td>T.Y. Hilton, IND</td><td>13</td><td>15</td></tr><tr class="row1"><td>DeVante Parker, MIA</td><td>12</td><td>14</td></tr><tr class="row1"><td>Kelvin Benjamin, CAR</td><td>11</td><td>13</td></tr><tr class="row1"><td>Stefon Diggs, MIN</td><td>11</td><td>15</td></tr><tr class="row1"><td>Golden Tate, DET</td><td>10</td><td>13</td></tr><tr class="row1"><td>Sammy Watkins, LAR</td><td>10</td><td>12</td></tr><tr class="row1"><td>Adam Thielen, MIN</td><td>9</td><td>12</td></tr><tr class="row1"><td>Larry Fitzgerald, ARI</td><td>9</td><td>11</td></tr><tr class="row1"><td>Jeremy Maclin, BAL</td><td>9</td><td>11</td></tr><tr class="row1"><td>Terrelle Pryor, WAS</td><td>9</td><td>11</td></tr><tr class="row1"><td>Jarvis Landry, MIA</td><td>8</td><td>12</td></tr><tr class="row1"><td>Emmanuel Sanders, DEN</td><td>8</td><td>11</td></tr><tr class="row1"><td>Chris Hogan, NE</td><td>8</td><td>11</td></tr><tr class="row1"><td>Willie Snead, NO</td><td>8</td><td>11</td></tr><tr class="row1"><td>Randall Cobb, GB</td><td>8</td><td>10</td></tr><tr class="row1"><td>Pierre Garcon, SF</td><td>6</td><td>9</td></tr><tr class="row1"><td>Cooper Kupp, LAR</td><td>6</td><td>8</td></tr><tr class="row1"><td>Corey Davis, TEN</td><td>7</td><td>9</td></tr><tr class="row1"><td>J.J. Nelson, ARI</td><td>7</td><td>9</td></tr><tr class="row1"><td>Tyrell Williams, LAC</td><td>6</td><td>8</td></tr><tr class="row1"><td>DeSean Jackson, TB</td><td>6</td><td>8</td></tr><tr class="row1"><td>Jamison Crowder, WAS</td><td>6</td><td>8</td></tr><tr class="row1"><td>Kenny Golladay, DET</td><td>6</td><td>7</td></tr><tr class="row1"><td>Jermaine Kearse, NYJ</td><td>6</td><td>7</td></tr><tr class="row1"><td>Donte Moncrief, IND</td><td>5</td><td>6</td></tr><tr class="row1"><td>Marqise Lee, JAC</td><td>5</td><td>6</td></tr><tr class="row1"><td>Allen Hurns, JAC</td><td>5</td><td>6 </td></tr></tbody></table>
+		<table id="widereceivers" class="table table-bordered table-hover" width="100%"><tbody><tr class="row1 title"><td>Player</td><td>Stnd</td><td>PPR</td></tr><tr class="row1"><td>Antonio Brown, PIT</td><td>38</td><td>41</td></tr><tr class="row1"><td>Julio Jones, ATL</td><td>36</td><td>39</td></tr><tr class="row1"><td>A.J. Green, CIN</td><td>31</td><td>34</td></tr><tr class="row1"><td>Odell Beckham, NYG</td><td>30</td><td>33</td></tr><tr class="row1"><td>Mike Evans, TB</td><td>30</td><td>33</td></tr><tr class="row1"><td>Jordy Nelson, GB</td><td>26</td><td>29</td></tr><tr class="row1"><td>Michael Thomas, NO</td><td>24</td><td>27</td></tr><tr class="row1"><td>Dez Bryant, DAL</td><td>21</td><td>23</td></tr><tr class="row1"><td>Keenan Allen, LAC</td><td>18</td><td>22</td></tr><tr class="row1"><td>Stefon Diggs, MIN</td><td>18</td><td>22</td></tr><tr class="row1"><td>Amari Cooper, OAK</td><td>18</td><td>21</td></tr><tr class="row1"><td>Tyreek Hill, KC</td><td>18</td><td>20</td></tr><tr class="row1"><td>Doug Baldwin, SEA</td><td>17</td><td>20</td></tr><tr class="row1"><td>Brandin Cooks, NE</td><td>17</td><td>19</td></tr><tr class="row1"><td>Alshon Jeffery, PHI</td><td>17</td><td>19</td></tr><tr class="row1"><td>Davante Adams, GB</td><td>16</td><td>18</td></tr><tr class="row1"><td>Demaryius Thomas, DEN</td><td>15</td><td>18</td></tr><tr class="row1"><td>Michael Crabtree, OAK</td><td>15</td><td>18</td></tr><tr class="row1"><td>DeAndre Hopkins, HOU</td><td>14</td><td>18</td></tr><tr class="row1"><td>Sammy Watkins, LAR</td><td>14</td><td>17</td></tr><tr class="row1"><td>T.Y. Hilton, IND</td><td>13</td><td>15</td></tr><tr class="row1"><td>DeVante Parker, MIA</td><td>13</td><td>15</td></tr><tr class="row1"><td>Martavis Bryant, PIT</td><td>13</td><td>15</td></tr><tr class="row1"><td>Adam Thielen, MIN</td><td>12</td><td>15</td></tr><tr class="row1"><td>Chris Hogan, NE</td><td>12</td><td>15</td></tr><tr class="row1"><td>Larry Fitzgerald, ARI</td><td>11</td><td>14</td></tr><tr class="row1"><td>Emmanuel Sanders, DEN</td><td>11</td><td>14</td></tr><tr class="row1"><td>Golden Tate, DET</td><td>11</td><td>14</td></tr><tr class="row1"><td>Kelvin Benjamin, CAR</td><td>9</td><td>11</td></tr><tr class="row1"><td>Jarvis Landry, MIA</td><td>8</td><td>12</td></tr><tr class="row1"><td>Willie Snead, NO</td><td>8</td><td>11</td></tr><tr class="row1"><td>Jeremy Maclin, BAL</td><td>8</td><td>10</td></tr><tr class="row1"><td>DeSean Jackson, TB</td><td>8</td><td>10</td></tr><tr class="row1"><td>Allen Hurns, JAC</td><td>8</td><td>9</td></tr><tr class="row1"><td>Pierre Garcon, SF</td><td>7</td><td>10</td></tr><tr class="row1"><td>Randall Cobb, GB</td><td>7</td><td>9</td></tr><tr class="row1"><td>Rishard Matthews, TEN</td><td>7</td><td>9</td></tr><tr class="row1"><td>Terrelle Pryor, WAS</td><td>7</td><td>9</td></tr><tr class="row1"><td>Marqise Lee, JAC</td><td>7</td><td>8</td></tr><tr class="row1"><td>Corey Davis, TEN</td><td>7</td><td>8</td></tr><tr class="row1"><td>J.J. Nelson, ARI</td><td>6</td><td>8</td></tr><tr class="row1"><td>Jamison Crowder, WAS</td><td>6</td><td>8</td></tr><tr class="row1"><td>Jermaine Kearse, NYJ</td><td>6</td><td>7</td></tr><tr class="row1"><td>Cooper Kupp, LAR</td><td>5</td><td>7</td></tr><tr class="row1"><td>Kenny Golladay, DET</td><td>5</td><td>6</td></tr><tr class="row1"><td>Donte Moncrief, IND</td><td>5</td><td>6</td></tr></tbody></table>
 
 		<h3>Tight Ends</h3>
-		<table id="tightends" class="table table-bordered table-hover" width="100%"><tbody><tr class="title"><td><strong>Player</strong></td><td><strong>Stnd</strong></td><td><strong>PPR</strong></td></tr><tr class="row1"><td>Rob Gronkowski, NE</td><td>24</td><td>26</td></tr><tr class="row1"><td>Travis Kelce, KC</td><td>16</td><td>18</td></tr><tr class="row1"><td>Zach Ertz, PHI</td><td>15</td><td>17</td></tr><tr class="row1"><td>Jordan Reed, WAS</td><td>12</td><td>14</td></tr><tr class="row1"><td>Delanie Walker, TEN</td><td>9</td><td>11</td></tr><tr class="row1"><td>Jimmy Graham, SEA</td><td>9</td><td>10</td></tr><tr class="row1"><td>Hunter Henry, LAC</td><td>8</td><td>10</td></tr><tr class="row1"><td>Jason Witten, DAL</td><td>7</td><td>9</td></tr><tr class="row1"><td>Kyle Rudolph, MIN</td><td>7</td><td>9</td></tr><tr class="row1"><td>Tyler Eifert, CIN</td><td>7</td><td>8</td></tr><tr class="row1"><td>Eric Ebron, DET</td><td>7</td><td>8</td></tr><tr class="row1"><td>Martellus Bennett, GB</td><td>6</td><td>7</td></tr><tr class="row1"><td>Jack Doyle, IND</td><td>6</td><td>7</td></tr><tr class="row1"><td>Coby Fleener, NO</td><td>6</td><td>7</td></tr><tr class="row1"><td>Evan Engram, NYG</td><td>5</td><td>7</td></tr><tr class="row1"><td>Greg Olsen, CAR</td><td>5</td><td>6</td></tr></tbody></table>
+		<table id="tightends" class="table table-bordered table-hover" width="100%"><tbody><tr class="row1 title"><td>Player</td><td>Stnd</td><td>PPR</td></tr><tr class="row1"><td>Rob Gronkowski, NE</td><td>25</td><td>27</td></tr><tr class="row1"><td>Travis Kelce, KC</td><td>15</td><td>17</td></tr><tr class="row1"><td>Zach Ertz, PHI</td><td>15</td><td>17</td></tr><tr class="row1"><td>Jordan Reed, WAS</td><td>10</td><td>12</td></tr><tr class="row1"><td>Delanie Walker, TEN</td><td>9</td><td>11</td></tr><tr class="row1"><td>Jimmy Graham, SEA</td><td>9</td><td>10</td></tr><tr class="row1"><td>Kyle Rudolph, MIN</td><td>7</td><td>9</td></tr><tr class="row1"><td>Eric Ebron, DET</td><td>	6</td><td>8</td></tr><tr class="row1"><td>Jason Witten, DAL</td><td>6</td><td>8</td></tr><tr class="row1"><td>Hunter Henry, LAC</td><td>6</td><td>7</td></tr><tr class="row1"><td>Evan Engram, NYG</td><td>5</td><td>7</td></tr><tr class="row1"><td>Greg Olsen, CAR</td><td>5</td><td>6</td></tr><tr class="row1"><td>Martellus Bennett, GB</td><td>5</td><td>6</td></tr><tr class="row1"><td>Charles Clay, BUF</td><td>5</td><td>6</td></tr></tbody></table>
 
 		<h3>Quarterbacks</h3>
-		<table id="quarterbacks" class="table table-bordered table-hover" width="100%"><tbody><tr class="title"><td><strong>Player</strong></td><td><strong>Stnd</strong></td><td><strong>PPR</strong></td></tr><tr class="row1"><td>Tom Brady, NE</td><td>20</td><td>20</td></tr><tr class="row1"><td>Aaron Rodgers, GB</td><td>18</td><td>18</td></tr><tr class="row1"><td>Drew Brees, NO</td><td>15</td><td>15</td></tr><tr class="row1"><td>Derek Carr, OAK</td><td>13</td><td>13</td></tr><tr class="row1"><td>Matt Ryan, ATL</td><td>12</td><td>12</td></tr><tr class="row1"><td>Ben Roethlisberger, PIT</td><td>12</td><td>12</td></tr><tr class="row1"><td>Carson Wentz, PHI</td><td>10</td><td>10</td></tr><tr class="row1"><td>Russell Wilson, SEA</td><td>10</td><td>10</td></tr><tr class="row1"><td>Jameis Winston, TB</td><td>10</td><td>10</td></tr><tr class="row1"><td>Matthew Stafford, DET</td><td>9</td><td>9</td></tr><tr class="row1"><td>Philip Rivers, LAC</td><td>9</td><td>9</td></tr><tr class="row1"><td>Marcus Mariota, TEN</td><td>9</td><td>9</td></tr><tr class="row1"><td>Cam Newton, CAR</td><td>8</td><td>8</td></tr><tr class="row1"><td>Dak Prescott, DAL</td><td>8</td><td>8</td></tr><tr class="row1"><td>Andrew Luck, IND</td><td>8</td><td>8</td></tr><tr class="row1"><td>Trevor Siemian, DEN</td><td>7</td><td>7</td></tr><tr class="row1"><td>Kirk Cousins, WAS</td><td>7</td><td>7</td></tr></tbody></table>
+		<table id="quarterbacks" class="table table-bordered table-hover" width="100%"><tbody><tr class="row1 title"><td>Player</td><td>Stnd</td><td>PPR</td></tr><tr class="row1"><td>Tom Brady, NE</td><td>22</td><td>22</td></tr><tr class="row1"><td>Aaron Rodgers, GB</td><td>19</td><td>19</td></tr><tr class="row1"><td>Drew Brees, NO</td><td>16</td><td>16</td></tr><tr class="row1"><td>Matt Ryan, ATL</td><td>12</td><td>12</td></tr><tr class="row1"><td>Derek Carr, OAK</td><td>12</td><td>12</td></tr><tr class="row1"><td>Ben Roethlisberger, PIT</td><td>11</td><td>11</td></tr><tr class="row1"><td>Russell Wilson, SEA</td><td>11</td><td>11</td></tr><tr class="row1"><td>Dak Prescott, DAL</td><td>10</td><td>10</td></tr><tr class="row1"><td>Matthew Stafford, DET</td><td>10</td><td>10</td></tr><tr class="row1"><td>Marcus Mariota, TEN</td><td>10</td><td>10</td></tr><tr class="row1"><td>Kirk Cousins, WAS</td><td>10</td><td>10</td></tr><tr class="row1"><td>Andrew Luck, IND</td><td>9</td><td>9</td></tr><tr class="row1"><td>Philip Rivers, LAC</td><td>9</td><td>9</td></tr><tr class="row1"><td>Jameis Winston, TB</td><td>9</td><td>9</td></tr><tr class="row1"><td>Carson Wentz, PHI</td><td>8</td><td>8</td></tr><tr class="row1"><td>Cam Newton, CAR</td><td>7</td><td>7</td></tr><tr class="row1"><td>Alex Smith, KC</td><td>6</td><td>6</td></tr></tbody></table>
 
 		<p class="float-right"><small>Created by <a href="https://twitter.com/p_Red">@p_Red</a> - Web developer and fantasy football fan</small></p>
 	</div>
 
-
+	<div class="card hover-card">
+		<div class="card-body">
+			<div class="player-info clearfix">
+				<h4 class="card-title">Player Name</h4>
+				<h6 class="card-subtitle">Position, Team</h6>
+			</div>
+			<hr class="my-3" />
+			<div class="row">
+				<div class="current-val col">Current:<div class="val">NA</div></div>
+				<div class="last-wk-val col">Last wk:<div class="val">NA</div></div>
+				<div class="change col">Change:<div class="val">NA</div></div>
+			</div>
+		</div>
+	</div>
 
 	<script>
 		(function($){$.concat||$.extend({concat:function(b,c){var a=[];for(var x in arguments)if(typeof a=='object')a=a.concat(arguments[x]);return a}});})(jQuery);
@@ -212,6 +259,14 @@
 
 		// combine all JSON objects into one
 		var fullData = $.concat(runningBacks, wideReceivers, tightEnds, quarterbacks);
+
+		// convert JSON to string so I can add it to the weeklyData file
+		// TODO try to automate this
+
+		// var weeklyData = [ fullData ];
+		// var weeklyData = JSON.stringify(weeklyData);
+		// console.log(weeklyData);
+			
 		
 		// build select fields
 		var $select = $('.player-name'); 
@@ -258,7 +313,7 @@
 				var playerObject = getPlayerByName(Player);
 				if (playerObject != '') {
 					if (scoringSystem == 'Stnd') {
-						 return Number(playerObject[0].Stnd);
+						return Number(playerObject[0].Stnd);
 					} else if (scoringSystem == 'PPR') {
 						return Number(playerObject[0].PPR);
 					} else {
@@ -303,6 +358,182 @@
 			$('#output .team2-results').html("<h6>Value of received players: " + team2value + "</h6>")
 
 			return false;
+		});
+
+		function fullTeamName(teamAbv) {
+			if (teamAbv == 'ARI') {
+				return 'Arizona Cardinals';
+			} else if (teamAbv == 'ATL') {
+				return 'Atlanta Falcons';
+			} else if (teamAbv == 'BAL') {
+				return 'Baltimore Ravens';
+			} else if (teamAbv == 'BUF') {
+				return 'Buffalo Bills';
+			} else if (teamAbv == 'CAR') {
+				return 'Carolina Panthers';
+			} else if (teamAbv == 'CHI') {
+				return 'Chicago Bears';
+			} else if (teamAbv == 'CIN') {
+				return 'Cincinatti Bengals';
+			} else if (teamAbv == 'CLE') {
+				return 'Cleveland Browns';
+			} else if (teamAbv == 'DET') {
+				return 'Detroit Lions';
+			} else if (teamAbv == 'DEN') {
+				return 'Denver Broncos';
+			} else if (teamAbv == 'DAL') {
+				return 'Dallas Cowboys';
+			} else if (teamAbv == 'GB') {
+				return 'Green Bay Packers';
+			} else if (teamAbv == 'HOU') {
+				return 'Houston Texans';
+			} else if (teamAbv == 'IND') {
+				return 'Indianapolis Colts';
+			} else if (teamAbv == 'JAC') {
+				return 'Jacksonville Jaguars';
+			} else if (teamAbv == 'KC') {
+				return 'Kansas City Chiefs'
+			} else if (teamAbv == 'LAC') {
+				return 'Los Angeles Chargers';
+			} else if (teamAbv == 'LAR') {
+				return 'Los Angeles Rams';
+			} else if (teamAbv == 'MIA') {
+				return 'Miami Dolphins';
+			} else if (teamAbv == 'MIN') {
+				return 'Minnesota Vikings';
+			} else if (teamAbv == 'NE') {
+				return 'New England Patriots';
+			} else if (teamAbv == 'NO') {
+				return 'New Orleans Saints';
+			} else if (teamAbv == 'NYG') {
+				return 'New York Giants';
+			} else if (teamAbv == 'NYJ') {
+				return 'New York Jets';
+			} else if (teamAbv == 'OAK') {
+				return 'Oakland Raiders';
+			} else if (teamAbv == 'PHI') {
+				return 'Philadelphia Eagles';
+			} else if (teamAbv == 'PIT') {
+				return 'Pittsburgh Steelers';
+			} else if (teamAbv == 'SEA') {
+				return 'Seattle Seahawks';
+			} else if (teamAbv == 'SF') {
+				return 'San Francisco 49ers';
+			} else if (teamAbv == 'TB') {
+				return 'Tampa Bay Buccaneers';
+			} else if (teamAbv == 'TEN') {
+				return 'Tennessee Titans';
+			} else if (teamAbv == 'WAS') {
+				return 'Washington R*******'
+			}
+		}
+
+		function positionAbv(position) {
+			if (position == 'runningbacks') {
+				return 'RB';
+			} else if (position == 'widereceivers') {
+				return 'WR';
+			} else if (position == 'tightends') {
+				return 'TE';
+			} else if (position == 'quarterbacks') {
+				return 'QB'
+			}
+		}
+
+
+		// player hover cards
+		$('tr:not(tr.title)').hoverIntent( function(ev) {
+			$('.hover-card').show(100);
+			$('.hover-card').css({"top": ev.pageY - 170 + "px", "left": ev.pageX + "px"});
+			var playerNameFull = $(this).children('td:first-child').text();
+			
+			// split player name and team, retrieve position
+			var length = playerNameFull.length;
+			var comma = playerNameFull.indexOf(',');
+			var teamAbv = playerNameFull.slice(comma).slice(2);
+			var playerName = playerNameFull.slice(0, comma);
+			var position = $(this).parents('table').attr('id');
+
+			// break up player name for image
+			// var removePunc = playerName.replace('.','');
+			// var lowercaseName = removePunc.toLowerCase();
+			// var space = lowercaseName.indexOf(' ');
+			// var lastName = lowercaseName.slice(space).slice(1);
+			// var firstName = lowercaseName.slice(0, space);
+			// var beginlastName = lastName.slice(0,5);
+			// var beginfirstName = firstName.slice(0,2);
+
+			// // build url
+			// var imgSource = 'http://cdn.footballdb.com/headshots/2017/' + beginlastName + beginfirstName;
+
+			// // write player info to card
+			$('.card-title').text(playerName);
+			$('.card-subtitle').text(positionAbv(position) + ', ' + fullTeamName(teamAbv));
+			// $('.headshot img').attr("src",imgSource + '01.jpg');
+			// $('.headshot img').on("error", function() {
+			// 	$('.headshot img').attr("src",imgSource + '02.jpg');
+			// 	$('.headshot img').on("error", function() {
+			// 		$('.headshot img').attr("src",imgSource + '03.jpg');
+			// 		$('.headshot img').on("error", function() {
+			// 			$('.headshot img').attr("src",imgSource + '04.jpg');
+			// 		});
+			// 	});
+			// });
+			
+			
+			// retrieve weekly data
+
+			// first, get rid of ajax caching
+			$.ajaxSetup({ cache:false });
+
+			// now pull the json data
+			$.getJSON("js/weeklyData.json", function(json) {
+				var length = json.length;
+				var currentWeek = length - 1;
+				var lastWeek = length - 2;
+				
+				// get players current trade value
+				var playerThisWeek = json[currentWeek].filter(
+					function(data) {
+						return data.Player == playerNameFull;
+					}
+				);
+				
+				// get players last week trade value
+				var playerLastWeek = json[lastWeek].filter(
+					function(data) {
+						return data.Player == playerNameFull;
+					}
+				);
+
+				// calculate the difference
+				if (playerLastWeek.length != 0) {
+					var difference = playerThisWeek[0].Stnd - playerLastWeek[0].Stnd;
+				} else {
+					var difference = playerThisWeek[0].Stnd - 0;
+				}
+
+				// write values to the hover card
+				$('.current-val').children('.val').text(playerThisWeek[0].Stnd);
+				if (playerLastWeek.length != 0) {
+					$('.last-wk-val').children('.val').text(playerLastWeek[0].Stnd);
+				}
+				if (difference >= 1) {
+					$('.change').children('.val').addClass('up').text('+' + difference);
+				} else if (difference == 0) {
+					$('.change').children('.val').addClass('same').text(difference);
+				} else if (difference < 0) {
+					$('.change').children('.val').addClass('down').text(difference)
+				}
+
+			});
+
+		}, function() {
+			$('.hover-card').hide(100);
+			$('.headshot img').attr("src", 'images/headshot-placeholder.jpg');
+			$('.current-val').children('.val').text('NA');
+			$('.last-wk-val').children('.val').text('NA');
+			$('.change').children('.val').removeClass('up same down');
 		});
 
 		// reset everything
