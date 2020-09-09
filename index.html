@@ -77,17 +77,17 @@
 				<div class="jumbotron">
 					<h1>Fantasy Football Trade Evaluator</h1>
 					<hr class="my-4">
-					This Fantasy Football Trade Evaluator tool uses the trade values from CBS Sports' Dave Richard.<br />
-					You can find his latest articles and rankings <a href="http://www.cbssports.com/writers/dave-richard/">here</a>.
+					<p>This Fantasy Football Trade Evaluator tool uses the trade values from CBS Sports' Dave Richard.<br />
+					You can find his latest articles and rankings <a href="http://www.cbssports.com/writers/dave-richard/">here</a>.</p>
 				</div>
 				
-			<p></p><em><strong>Weekly Update:</strong> Updated values for the start of the 2020 season</em></p>
+			<p><em><strong>Weekly Update:</strong> Updated values for the start of the 2020 season</em></p>
 
 			<h5>Changelog:</h5>
 				<p class="updates">
 				<em><strong>v2.0:</strong> Add player info cards, hover over players in table to see difference between this week and last week's trade value</em><br />
 				<em><strong>v1.8:</strong> Add replacement level players for each position, which have values one less than the lowest rated player for that position</em><br />
-				<em><strong>v1.5:</strong> Add half PPR option (average of Standard and PPR values)</em>
+				<em><strong>v1.5:</strong> Add half PPR option (average of Standard and PPR values)</em></p>
 			</div>
 		</div>
 		<form id="tradeEvaluator">
@@ -216,7 +216,7 @@
 		<!-- <h3>DSTs</h3>
 		<table id="dsts" class="table table-bordered table-hover" width="100%"><tbody><tr class="title"><td>Player</td><td>Stnd</td><td>PPR</td></tr><tr class="row1"><td>Bears DST</td><td>7</td><td>7</td></tr><tr class="row1"><td>Jaguars DST</td><td>7</td><td>7</td></tr><tr class="row1"><td>Ravens DST</td><td>7</td><td>7</td></tr><tr class="row1"><td>Rams DST</td><td>7</td><td>7</td></tr></tbody></table> -->
 
-		<p class="float-right"><small>Created by <a href="https://twitter.com/p_Red">@p_Red</a> - Web developer and fantasy football fan</small>
+		<p class="float-right"><small>Created by <a href="https://twitter.com/p_Red">@p_Red</a> - Web developer and fantasy football fan</small></p>
 	</div>
 
 	<div class="card hover-card">
@@ -268,9 +268,9 @@
 		// convert JSON to string so I can add it to the weeklyData file
 		// TODO try to automate this
 
-		var weeklyData = [ fullData ];
-		var weeklyData = JSON.stringify(weeklyData);
-		console.log(weeklyData);
+		// var weeklyData = [ fullData ];
+		// var weeklyData = JSON.stringify(weeklyData);
+		// console.log(weeklyData);
 		// regex for removing links: <a href="\/fantasy\/football\/players\/\d{4,}\/\w{2,}-\w{2,}\/">
 			
 		
@@ -476,7 +476,7 @@
 			// var beginfirstName = firstName.slice(0,2);
 
 			// // build url
-			// var imgSource = 'http://cdn.footballdb.com/headshots/2017/' + beginlastName + beginfirstName;
+			// var imgSource = 'https://cdn.footballdb.com/headshots/NFL/2019' + beginlastName + beginfirstName;
 
 			// // write player info to card
 			if (position != 'dsts') {
